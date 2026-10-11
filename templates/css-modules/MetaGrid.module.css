@@ -1,0 +1,45 @@
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.cols2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.cols3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cols4 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 1024px) {
+  .cols4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.value {
+  margin-top: 0.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+@media (prefers-color-scheme: dark) {
+  .label {
+    color: #94a3b8;
+  }
+
+  .value {
+    color: #fff;
+  }
+}

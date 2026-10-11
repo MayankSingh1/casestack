@@ -1,0 +1,176 @@
+.section {
+  padding: 4rem 0;
+  border-top: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: 6rem 0;
+  }
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+.label {
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+}
+
+.card {
+  display: block;
+  margin-top: 2rem;
+  overflow: hidden;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.grid {
+  display: grid;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #f1f5f9;
+}
+
+@media (min-width: 1024px) {
+  .imageWrapper {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .content {
+    padding: 3rem;
+  }
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  transition: color 0.15s ease;
+}
+
+@media (min-width: 640px) {
+  .title {
+    font-size: 1.875rem;
+  }
+}
+
+.card:hover .title {
+  color: #2563eb;
+}
+
+.description {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  color: #475569;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  font-weight: 500;
+  color: #2563eb;
+}
+
+.arrow {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform 0.15s ease;
+}
+
+.card:hover .arrow {
+  transform: translateX(0.25rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  .section {
+    border-top-color: #1e293b;
+    background-color: #0f172a;
+  }
+
+  .label {
+    color: #94a3b8;
+  }
+
+  .card {
+    background-color: #1e293b;
+  }
+
+  .imageWrapper {
+    background-color: #334155;
+  }
+
+  .title {
+    color: #fff;
+  }
+
+  .card:hover .title {
+    color: #60a5fa;
+  }
+
+  .description {
+    color: #cbd5e1;
+  }
+
+  .cta {
+    color: #60a5fa;
+  }
+}

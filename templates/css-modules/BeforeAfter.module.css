@@ -1,0 +1,70 @@
+.figure {
+  margin: 2rem 0;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.item {
+  position: relative;
+}
+
+.labelBefore,
+.labelAfter {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  z-index: 10;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.labelBefore {
+  background-color: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+.labelAfter {
+  background-color: #059669;
+}
+
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: #f1f5f9;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.caption {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+@media (prefers-color-scheme: dark) {
+  .imageWrapper {
+    background-color: #1e293b;
+  }
+
+  .caption {
+    color: #94a3b8;
+  }
+}

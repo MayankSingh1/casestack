@@ -1,0 +1,66 @@
+.figure {
+  margin: 2rem 0;
+}
+
+.fullWidth {
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+@media (min-width: 640px) {
+  .fullWidth {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fullWidth {
+    margin-left: -2rem;
+    margin-right: -2rem;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: #f1f5f9;
+}
+
+.aspect169 {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect43 {
+  aspect-ratio: 4 / 3;
+}
+
+.aspect32 {
+  aspect-ratio: 3 / 2;
+}
+
+.aspect11 {
+  aspect-ratio: 1 / 1;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.caption {
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+@media (prefers-color-scheme: dark) {
+  .imageWrapper {
+    background-color: #1e293b;
+  }
+
+  .caption {
+    color: #94a3b8;
+  }
+}

@@ -1,0 +1,220 @@
+---
+slug: acme-checkout-redesign
+title: Reimagining Checkout for Global Scale
+outcome: Reduced cart abandonment by 23%, recovering $4.2M in annual revenue
+role: Lead Product Designer
+timeline: 4 months (Q2-Q3 2023)
+team:
+  - Maya Chen (Designer)
+  - Alex Kim (PM)
+  - Jordan Lee (Researcher)
+  - 5 Engineers
+teamSize: 9
+platforms:
+  - Web
+  - Mobile Web
+company: Acme Commerce (fictional)
+year: 2023
+isNDA: false
+heroImage: /work/acme-checkout/hero.png
+heroAlt: Streamlined 2-step checkout flow showing payment and confirmation screens
+---
+
+## TL;DR
+
+Acme Commerce's checkout flow was losing $18M annually to abandonment due to a fragmented 5-step process with hidden trust signals. I led a 4-month redesign that consolidated it to 2 steps, added smart defaults for international users, and surfaced trust badges at decision points. **Result: 23% higher completion rates and $4.2M in recovered annual revenue.**
+
+## Context & Business Problem
+
+Acme Commerce processes $2B in annual transactions across 40 countries. Despite strong brand recognition, **conversion from cart to purchase lagged competitors by 15 percentage points**. Checkout abandonment cost the company an estimated $18M annually.
+
+The existing checkout flow was built 4 years prior for US-only customers. As Acme expanded internationally, the flow accumulated patches without a coherent redesign. Trust signals were buried, address formats confused international users, and forced account creation drove away one-time buyers.
+
+Leadership prioritized checkout optimization as a Q2 initiative after customer research revealed trust and complexity as top friction points.
+
+## My Role & Collaboration
+
+As **Lead Product Designer**, I:
+
+- Owned end-to-end checkout UX across web and mobile
+- Led a team of 2 designers, conducting weekly design critiques
+- Partnered with Data Science to define success metrics
+- Facilitated stakeholder alignment across 3 business units
+- Collaborated daily with engineering on feasibility trade-offs
+
+I worked embedded with the Checkout team (1 PM, 5 engineers, 1 researcher) and coordinated with the International Growth team for localization requirements.
+
+## Constraints
+
+- **4-month deadline** for holiday shopping peak
+- **Legacy payment APIs** requiring backward compatibility with 3 providers
+- **12-language localization** with no dedicated team
+- **No dedicated researcher**—I conducted guerrilla testing myself
+- **Mobile-critical**: 62% of traffic, but 40% of revenue (conversion gap)
+
+## Research & Insights
+
+### Methods
+
+| Method | Sample |
+|--------|--------|
+| Session recording analysis (Fullstory) | 10,000 sessions |
+| User interviews (US, UK, Germany) | 12 participants |
+| Unmoderated usability testing | 45 participants |
+| Competitive benchmarking | 5 platforms |
+
+### Key Findings
+
+1. **67% abandoned at payment step**—trust signals were hidden below fold on mobile
+2. **International users spent 40% longer on address entry** due to US-centric field ordering
+3. **Guest checkout was buried**, forcing unnecessary account creation
+4. **Users hesitated at final confirmation** due to unclear total cost breakdown
+
+> "I just want to buy this one thing. Why do I need to create an account?"
+> — Participant 7, UK
+
+> "I wasn't sure if the total included shipping until the very end. That's frustrating."
+> — Participant 12, Germany
+
+## Problem Framing
+
+### Reframed Problem
+
+"Reduce checkout abandonment" → **"Build trust and reduce cognitive load so users feel confident completing purchase in any market"**
+
+### How Might We...
+
+- Surface trust signals at key decision points?
+- Adapt the flow for international address expectations?
+- Make guest checkout the obvious path for one-time buyers?
+
+### Success Metrics
+
+| Metric | Target | Result |
+|--------|--------|--------|
+| Checkout completion rate | +15% | **+23%** |
+| Time to purchase | -30% | **-35%** |
+| Support tickets | No increase | **-18%** |
+
+## Process & Key Decisions
+
+### Decision: Mobile-First Redesign
+
+**Options considered:**
+- Desktop-first with mobile adaptation
+- Parity across devices from start
+- **Mobile-first (chosen)**
+
+**Trade-off:** Desktop would inherit some touch-optimized patterns.
+
+**Rationale:** 62% of traffic was mobile, but conversion was 15pp lower than desktop. Fixing mobile had the highest ROI.
+
+### Decision: Hybrid Checkout (Collapsible Sections)
+
+**Options considered:**
+- Single-page (all fields visible)
+- Multi-step wizard (one section per screen)
+- **Hybrid collapsible (chosen)**
+
+**Trade-off:** +2 weeks engineering time for more complex interactions.
+
+**Rationale:** User testing showed 40% of users scan all information, 60% step through. Hybrid served both without forcing a choice.
+
+### Decision: Guest Checkout as Default
+
+**Options considered:**
+- Sign-in prompt first
+- Side-by-side guest/account options
+- **Guest as default (chosen)**
+
+**Trade-off:** Potential reduction in account creation.
+
+**Rationale:** 34% of abandoned carts cited forced account creation. Defaulting to guest removed friction; users could still opt in to save info after purchase.
+
+## Solution Walkthrough
+
+A streamlined 2-step checkout flow with smart defaults, prominent trust signals, and seamless international support.
+
+### Trust Badges Above Fold
+
+Security badges, payment icons, and money-back guarantee moved to fixed position visible on first load.
+
+*Design decision: 67% of users previously abandoned at payment step—trust signals were hidden below fold*
+
+### Smart Address Lookup
+
+Postal code lookup that auto-fills city/state and reorders fields based on user's locale.
+
+*Reduced address fields from 7 to 2 for most users; international users see locale-appropriate field order*
+
+### Guest Checkout Default
+
+No account required. Users can optionally save info with one checkbox after purchase.
+
+*Addressed the #1 abandonment reason: 'didn't want to create an account'*
+
+### Sticky Order Summary
+
+Running total with shipping estimate visible at all times, updating dynamically as options change.
+
+*Users wanted clarity on total cost at every step—eliminated end-of-flow surprises*
+
+## Validation
+
+### Testing
+
+- Moderated usability testing (12 participants) on prototype
+- Unmoderated testing (45 participants) across US, UK, Germany  
+- A/B test (50,000 users, 2 weeks) for trust badge placement
+
+### What Changed
+
+| Before Testing | Feedback | After Testing |
+|----------------|----------|---------------|
+| "Apply coupon" link | 3/12 users missed it | Changed to button |
+| US address field order | International users struggled | Locale-aware ordering |
+| "Express checkout" label | Users confused | "Pay with saved info" |
+
+### Results
+
+- A/B test: Trust badges above fold outperformed by 8%—shipped to 100%
+- Post-launch survey: **4.8/5 checkout satisfaction** (up from 3.9)
+
+## Impact
+
+| Metric | Before | After | Change |
+|--------|--------|-------|--------|
+| Checkout completion | 62% | 76% | **+23%** |
+| Time to purchase | 4.5 min | 2.9 min | **-35%** |
+| Support tickets | 850/mo | 697/mo | **-18%** |
+
+**Revenue recovered: $4.2M annually**
+
+### Qualitative Impact
+
+- Featured in company all-hands as Q3 highlight
+- Checkout approach adopted by 3 other product teams
+- Design system team incorporated components into shared library
+
+## Reflection & Learnings
+
+### What I Learned
+
+- **Localization should start day 1**, not be retrofitted—we burned 2 weeks fixing field ordering issues
+- **Stakeholder alignment workshops saved 3 weeks** of rework—the upfront investment paid off
+- **Guerrilla testing is better than no testing**—even 5-minute hallway tests caught major issues
+
+### What I'd Do Differently
+
+- **Involve engineering earlier** in ideation—we hit avoidable technical debt on the address API integration
+- **Set up metrics tracking before launch**—we had a 2-week data gap while analytics was configured
+
+## Next Steps
+
+- One-click reorder for returning customers (in progress)
+- Apple Pay / Google Pay integration
+- Saved payment methods for logged-in users
+
+---
+
+*This is a fictional case study created for demonstration purposes. Company, metrics, and individuals are not real.*

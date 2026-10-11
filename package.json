@@ -1,0 +1,42 @@
+{
+  "name": "casestack",
+  "version": "1.0.0",
+  "description": "Turn raw project material into a polished portfolio case study in one go. A senior UX/product designer's skill package for Cursor, Claude Code, and Codex.",
+  "main": "lib/init.js",
+  "bin": {
+    "casestack": "./bin/casestack.js"
+  },
+  "scripts": {
+    "validate": "node validate.js",
+    "test": "node validate.js"
+  },
+  "keywords": [
+    "portfolio",
+    "case-study",
+    "ux-design",
+    "product-design",
+    "cursor-skill",
+    "claude-code",
+    "codex",
+    "figma",
+    "next.js"
+  ],
+  "author": "",
+  "license": "MIT",
+  "files": [
+    "bin/",
+    "lib/",
+    "skills/",
+    "templates/",
+    "references/",
+    "examples/",
+    "cursor-plugin.json"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}

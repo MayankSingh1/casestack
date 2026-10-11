@@ -1,0 +1,281 @@
+{
+  "meta": {
+    "slug": "acme-checkout-redesign",
+    "title": "Reimagining Checkout for Global Scale",
+    "oneLiner": "Reduced cart abandonment by 23%, recovering $4.2M in annual revenue",
+    "role": "Lead Product Designer",
+    "timeline": "4 months (Q2-Q3 2023)",
+    "team": ["Maya Chen (Designer)", "Alex Kim (PM)", "Jordan Lee (Researcher)", "5 Engineers"],
+    "teamSize": 9,
+    "platform": ["Web", "Mobile Web"],
+    "company": "Acme Commerce (fictional)",
+    "year": 2023,
+    "isNDA": false,
+    "ndaNote": null
+  },
+  
+  "hero": {
+    "title": "Reimagining Checkout for Global Scale",
+    "outcome": "Reduced cart abandonment by 23%, recovering $4.2M in annual revenue",
+    "heroImage": "/work/acme-checkout/hero.png",
+    "heroAlt": "Streamlined 2-step checkout flow showing payment and confirmation screens"
+  },
+  
+  "tldr": "Acme Commerce's checkout flow was losing $18M annually to abandonment due to a fragmented 5-step process with hidden trust signals. I led a 4-month redesign that consolidated it to 2 steps, added smart defaults for international users, and surfaced trust badges at decision points. The result: 23% higher completion rates and $4.2M in recovered annual revenue.",
+  
+  "context": {
+    "businessProblem": "Acme Commerce processes $2B in annual transactions across 40 countries. Despite strong brand recognition, conversion from cart to purchase lagged competitors by 15 percentage points. Checkout abandonment cost the company an estimated $18M annually.",
+    "background": "The existing checkout flow was built 4 years prior for US-only customers. As Acme expanded internationally, the flow accumulated patches without a coherent redesign. Trust signals were buried, address formats confused international users, and forced account creation drove away one-time buyers.",
+    "stakeholders": ["VP of Product", "Head of Engineering", "International Growth Team", "Customer Support"]
+  },
+  
+  "myRole": {
+    "responsibilities": [
+      "Owned end-to-end checkout UX across web and mobile",
+      "Led a team of 2 designers, conducting weekly design critiques",
+      "Partnered with Data Science to define success metrics",
+      "Facilitated stakeholder alignment across 3 business units",
+      "Collaborated daily with engineering on feasibility trade-offs"
+    ],
+    "collaboration": "I worked embedded with the Checkout team (1 PM, 5 engineers, 1 researcher) and coordinated with the International Growth team for localization requirements.",
+    "ownership": "I defined the design strategy, success metrics, and prioritization framework. I made final design decisions with input from research and engineering constraints."
+  },
+  
+  "constraints": [
+    "4-month timeline to ship before holiday shopping peak",
+    "Must maintain backward compatibility with 3 legacy payment provider APIs",
+    "Localization for 12 languages with no dedicated localization team",
+    "No dedicated researcher—I conducted guerrilla testing myself",
+    "Mobile web conversion critical (62% of traffic, 40% of revenue)"
+  ],
+  
+  "research": {
+    "methods": [
+      "Session recordings analysis (10,000 sessions via Fullstory)",
+      "User interviews (12 participants across US, UK, Germany)",
+      "Unmoderated usability testing (45 participants)",
+      "Competitive benchmarking (5 major e-commerce platforms)"
+    ],
+    "keyFindings": [
+      "67% of users abandoned at the payment step—trust signals were hidden below fold on mobile",
+      "International users spent 40% longer on address entry due to US-centric field ordering",
+      "Guest checkout was buried in a secondary tab, forcing unnecessary account creation",
+      "Users hesitated at final confirmation due to unclear total cost breakdown"
+    ],
+    "evidence": [
+      "Heatmaps showed 80% of mobile users never scrolled to see security badges",
+      "Session recordings revealed users abandoning after encountering 'State/Province' before 'Postal Code'",
+      "Survey data: 34% of abandoned carts cited 'didn't want to create an account'"
+    ],
+    "quotes": [
+      {
+        "text": "I just want to buy this one thing. Why do I need to create an account?",
+        "source": "Participant 7, UK"
+      },
+      {
+        "text": "I wasn't sure if the total included shipping until the very end. That's frustrating.",
+        "source": "Participant 12, Germany"
+      }
+    ]
+  },
+  
+  "problemFraming": {
+    "hmw": [
+      "How might we surface trust signals at key decision points?",
+      "How might we adapt the flow for international address expectations?",
+      "How might we make guest checkout the obvious path for one-time buyers?"
+    ],
+    "successMetrics": [
+      {
+        "metric": "Checkout completion rate",
+        "target": "+15%",
+        "actual": "+23%"
+      },
+      {
+        "metric": "Time to purchase",
+        "target": "-30%",
+        "actual": "-35%"
+      },
+      {
+        "metric": "Support tickets (checkout-related)",
+        "target": "No increase",
+        "actual": "-18%"
+      }
+    ]
+  },
+  
+  "process": [
+    {
+      "phase": "Discovery & Framing",
+      "description": "Analyzed existing data, conducted user research, and aligned stakeholders on the problem definition and success metrics.",
+      "decisions": [
+        {
+          "decision": "Focus on mobile-first redesign",
+          "alternatives": ["Desktop-first with mobile adaptation", "Parity across devices from start"],
+          "tradeoffs": "Mobile-first meant desktop would inherit some touch-optimized patterns, but data showed mobile was the critical conversion gap.",
+          "rationale": "62% of traffic was mobile but conversion was 15pp lower than desktop. Fixing mobile had highest ROI."
+        }
+      ],
+      "visuals": ["/work/acme-checkout/discovery-journey-map.png"]
+    },
+    {
+      "phase": "Ideation & Exploration",
+      "description": "Explored 3 structural approaches and tested quick prototypes with users before committing to a direction.",
+      "decisions": [
+        {
+          "decision": "Hybrid checkout (collapsible sections)",
+          "alternatives": ["Single-page (all fields visible)", "Multi-step wizard (one section per screen)"],
+          "tradeoffs": "More complex to build (+2 weeks engineering), but accommodated both scanning and stepping behaviors.",
+          "rationale": "User testing showed 40% of users prefer to scan all information, 60% prefer to focus on one section. Hybrid served both without forcing a choice."
+        },
+        {
+          "decision": "Guest checkout as default state",
+          "alternatives": ["Sign-in prompt first", "Side-by-side guest/account options"],
+          "tradeoffs": "Potential reduction in account creation, but account team agreed conversion was priority.",
+          "rationale": "34% of abandoned carts cited forced account creation. Defaulting to guest removed friction; users who wanted accounts could still opt in."
+        }
+      ],
+      "visuals": ["/work/acme-checkout/exploration-wireframes.png"]
+    },
+    {
+      "phase": "Design & Iteration",
+      "description": "Built high-fidelity prototypes, tested with 45 users across 3 markets, and iterated based on feedback.",
+      "decisions": [
+        {
+          "decision": "Sticky order summary with running total",
+          "alternatives": ["Summary at bottom only", "Expandable drawer"],
+          "tradeoffs": "Takes vertical space on mobile, but testing showed users valued constant cost visibility.",
+          "rationale": "Users abandoned when unsure of total. Sticky summary with shipping estimate reduced uncertainty at every step."
+        },
+        {
+          "decision": "Smart address lookup with market-specific field ordering",
+          "alternatives": ["Standard US field order for all", "Completely custom forms per market"],
+          "tradeoffs": "Required integration with address validation API and conditional logic, adding 1 week to timeline.",
+          "rationale": "International users struggled with US-centric forms. Smart lookup reduced fields from 7 to 2 and ordered remaining fields by market convention."
+        }
+      ],
+      "visuals": ["/work/acme-checkout/design-high-fidelity.png"]
+    }
+  ],
+  
+  "solution": {
+    "overview": "A streamlined 2-step checkout flow with smart defaults, prominent trust signals, and seamless international support. Guest checkout is default, with one-click account creation at confirmation.",
+    "features": [
+      {
+        "name": "Trust Badges Above Fold",
+        "description": "Security badges, payment icons, and money-back guarantee moved to fixed position visible on first load.",
+        "visual": "/work/acme-checkout/solution-trust-badges.png",
+        "annotation": "67% of users previously abandoned at payment step—trust signals were hidden below fold"
+      },
+      {
+        "name": "Smart Address Lookup",
+        "description": "Postal code lookup that auto-fills city/state and reorders fields based on user's locale.",
+        "visual": "/work/acme-checkout/solution-address.png",
+        "annotation": "Reduced address fields from 7 to 2 for most users; international users see locale-appropriate field order"
+      },
+      {
+        "name": "Guest Checkout Default",
+        "description": "No account required. Users can optionally save info with one checkbox after purchase.",
+        "visual": "/work/acme-checkout/solution-guest.png",
+        "annotation": "Addressed the #1 abandonment reason: 'didn't want to create an account'"
+      },
+      {
+        "name": "Sticky Order Summary",
+        "description": "Running total with shipping estimate visible at all times, updating dynamically as options change.",
+        "visual": "/work/acme-checkout/solution-summary.png",
+        "annotation": "Users wanted clarity on total cost at every step—eliminated end-of-flow surprises"
+      }
+    ]
+  },
+  
+  "validation": {
+    "testing": [
+      "Moderated usability testing (12 participants) on prototype",
+      "Unmoderated testing (45 participants) across US, UK, Germany",
+      "A/B test (50,000 users, 2 weeks) for trust badge placement"
+    ],
+    "iterations": [
+      "Changed 'Apply coupon' link to button after 3/12 users missed it",
+      "Reordered address fields by market after international users struggled with US format",
+      "Changed 'Express checkout' label to 'Pay with saved info' after confusion in testing",
+      "Added estimated delivery date to order summary after user feedback"
+    ],
+    "feedback": [
+      "A/B test: Trust badges above fold outperformed by 8%—shipped to 100%",
+      "Post-launch survey: 4.8/5 checkout satisfaction (up from 3.9)",
+      "Support tickets dropped 18% in first month after launch"
+    ]
+  },
+  
+  "impact": {
+    "metrics": [
+      {
+        "name": "Checkout completion rate",
+        "before": "62%",
+        "after": "76%",
+        "change": "+23%",
+        "isEstimate": false
+      },
+      {
+        "name": "Revenue recovered",
+        "before": null,
+        "after": "$4.2M annually",
+        "change": null,
+        "isEstimate": false
+      },
+      {
+        "name": "Time to purchase",
+        "before": "4.5 min",
+        "after": "2.9 min",
+        "change": "-35%",
+        "isEstimate": false
+      },
+      {
+        "name": "Checkout support tickets",
+        "before": "850/mo",
+        "after": "697/mo",
+        "change": "-18%",
+        "isEstimate": false
+      }
+    ],
+    "qualitative": [
+      "Featured in company all-hands as Q3 highlight",
+      "Checkout approach adopted by 3 other product teams",
+      "Design system team incorporated components into shared library",
+      "Received 4.8/5 in post-launch user survey (up from 3.9)"
+    ]
+  },
+  
+  "reflection": {
+    "learnings": [
+      "Localization should start day 1, not be retrofitted—we burned 2 weeks fixing field ordering issues that could have been avoided",
+      "Stakeholder alignment workshops saved us 3 weeks of rework—the upfront investment paid off",
+      "Guerrilla testing is better than no testing—even 5-minute hallway tests caught major issues"
+    ],
+    "whatWouldChange": [
+      "Involve engineering earlier in ideation—we hit avoidable technical debt on the address API integration",
+      "Set up metrics tracking before launch—we had a 2-week data gap while analytics was configured",
+      "Document design decisions in real-time—reconstructing rationale for this case study was harder than it should have been"
+    ]
+  },
+  
+  "nextSteps": [
+    "One-click reorder for returning customers (in progress)",
+    "Apple Pay / Google Pay integration",
+    "Saved payment methods for logged-in users"
+  ],
+  
+  "assets": {
+    "images": [
+      { "path": "/work/acme-checkout/hero.png", "alt": "Final checkout flow overview", "caption": null },
+      { "path": "/work/acme-checkout/discovery-journey-map.png", "alt": "User journey map highlighting pain points", "caption": "Journey map from discovery phase" },
+      { "path": "/work/acme-checkout/exploration-wireframes.png", "alt": "Wireframe exploration of 3 checkout structures", "caption": "Exploring single-page, wizard, and hybrid approaches" },
+      { "path": "/work/acme-checkout/design-high-fidelity.png", "alt": "High-fidelity designs of the hybrid checkout", "caption": null },
+      { "path": "/work/acme-checkout/solution-trust-badges.png", "alt": "Trust badges positioned above fold on mobile", "caption": null },
+      { "path": "/work/acme-checkout/solution-address.png", "alt": "Smart address lookup with locale-aware fields", "caption": null },
+      { "path": "/work/acme-checkout/solution-guest.png", "alt": "Guest checkout as the default option", "caption": null },
+      { "path": "/work/acme-checkout/solution-summary.png", "alt": "Sticky order summary with running total", "caption": null }
+    ],
+    "videos": []
+  }
+}

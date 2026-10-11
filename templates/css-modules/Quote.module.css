@@ -1,0 +1,69 @@
+.pullquote {
+  margin: 3rem 0;
+  padding-left: 1.5rem;
+  border-left: 4px solid #0f172a;
+}
+
+.pullquoteText {
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.625;
+  color: #0f172a;
+}
+
+@media (min-width: 640px) {
+  .pullquoteText {
+    font-size: 1.875rem;
+  }
+}
+
+.default {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #f8fafc;
+}
+
+.defaultText {
+  font-size: 1.125rem;
+  font-style: italic;
+  color: #334155;
+}
+
+.footer {
+  margin-top: 0.75rem;
+}
+
+.cite {
+  font-size: 0.875rem;
+  font-style: normal;
+  color: #64748b;
+}
+
+.role {
+  color: #64748b;
+}
+
+@media (prefers-color-scheme: dark) {
+  .pullquote {
+    border-left-color: #fff;
+  }
+
+  .pullquoteText {
+    color: #fff;
+  }
+
+  .default {
+    background-color: rgba(30, 41, 59, 0.5);
+  }
+
+  .defaultText {
+    color: #cbd5e1;
+  }
+
+  .cite,
+  .role {
+    color: #94a3b8;
+  }
+}

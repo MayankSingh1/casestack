@@ -1,0 +1,175 @@
+.card {
+  margin: 1.5rem 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+  background-color: #fff;
+}
+
+.header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.body {
+  padding: 1.5rem;
+}
+
+.chosen {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #ecfdf5;
+}
+
+.chosenHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  background-color: #059669;
+  color: #fff;
+  font-size: 0.875rem;
+}
+
+.chosenName {
+  font-weight: 600;
+  color: #065f46;
+}
+
+.chosenDescription {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #047857;
+}
+
+.toggle {
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #475569;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  color: #0f172a;
+}
+
+.alternatives {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.alternative {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.altName {
+  font-weight: 500;
+  color: #334155;
+}
+
+.altDescription {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail {
+}
+
+.detailLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+}
+
+.detailText {
+  margin-top: 0.25rem;
+  color: #334155;
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    border-color: #334155;
+    background-color: rgba(30, 41, 59, 0.5);
+  }
+
+  .header {
+    border-color: #334155;
+    background-color: #1e293b;
+  }
+
+  .title {
+    color: #fff;
+  }
+
+  .chosen {
+    background-color: rgba(6, 78, 59, 0.2);
+  }
+
+  .chosenName {
+    color: #6ee7b7;
+  }
+
+  .chosenDescription {
+    color: #34d399;
+  }
+
+  .toggle {
+    color: #94a3b8;
+  }
+
+  .toggle:hover {
+    color: #fff;
+  }
+
+  .alternative {
+    border-color: #334155;
+  }
+
+  .altName {
+    color: #cbd5e1;
+  }
+
+  .altDescription {
+    color: #94a3b8;
+  }
+
+  .detailLabel {
+    color: #94a3b8;
+  }
+
+  .detailText {
+    color: #cbd5e1;
+  }
+}

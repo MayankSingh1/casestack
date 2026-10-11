@@ -1,0 +1,63 @@
+{
+  "name": "casestack",
+  "version": "1.0.0",
+  "displayName": "Casestack: Portfolio Case Study Generator",
+  "description": "Transform raw project material into senior-level portfolio case studies with structured content, gap-fill interviews, and production-ready Next.js pages.",
+  "author": "",
+  "skills": [
+    {
+      "name": "case-study",
+      "path": "skills/case-study/SKILL.md",
+      "description": "Main entry point for creating portfolio case studies. Routes to ingest, interview, write, and generate sub-skills.",
+      "triggers": [
+        "case study",
+        "portfolio",
+        "casestack",
+        "design case",
+        "UX case study"
+      ]
+    },
+    {
+      "name": "case-study/ingest",
+      "path": "skills/case-study/ingest/SKILL.md",
+      "description": "Ingest project material (docs, PDFs, Figma files, notes) and extract structured content."
+    },
+    {
+      "name": "case-study/interview",
+      "path": "skills/case-study/interview/SKILL.md",
+      "description": "Gap-fill interview to capture missing senior case-study content."
+    },
+    {
+      "name": "case-study/write",
+      "path": "skills/case-study/write/SKILL.md",
+      "description": "Generate case study content following senior rubric and writing rules."
+    },
+    {
+      "name": "case-study/architecture",
+      "path": "skills/case-study/architecture/SKILL.md",
+      "description": "Reference for senior case-study architecture and what hiring managers look for."
+    },
+    {
+      "name": "case-study/page-generator",
+      "path": "skills/case-study/page-generator/SKILL.md",
+      "description": "Generate Next.js case study pages matching the portfolio's existing conventions."
+    },
+    {
+      "name": "case-study/review",
+      "path": "skills/case-study/review/SKILL.md",
+      "description": "Score case study against senior rubric and verify build/accessibility."
+    }
+  ],
+  "templates": {
+    "tailwind": "templates/tailwind/",
+    "css-modules": "templates/css-modules/",
+    "styled-components": "templates/styled-components/",
+    "emotion": "templates/emotion/"
+  },
+  "references": [
+    "references/senior-rubric.md",
+    "references/writing-rules.md",
+    "references/nda-handling.md"
+  ],
+  "platforms": ["cursor", "claude-code", "codex"]
+}

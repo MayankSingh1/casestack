@@ -60,17 +60,20 @@ casestack/
 │       ├── interview/        # Gap-fill questioning
 │       ├── write/            # Generate narrative
 │       ├── architecture/     # Section reference guide
+│       ├── style-presets/    # Presentation style selection
 │       ├── page-generator/   # Create Next.js pages
 │       └── review/           # Score and verify
 ├── templates/
-│   ├── tailwind/             # Tailwind CSS components
-│   ├── css-modules/          # CSS Modules components
-│   ├── styled-components/    # styled-components
-│   └── emotion/              # Emotion components
+│   ├── tailwind/             # Tailwind CSS (17 components)
+│   ├── css-modules/          # CSS Modules (17 components)
+│   ├── styled-components/    # styled-components (17 components)
+│   └── emotion/              # Emotion (17 components)
 ├── references/
-│   ├── senior-rubric.md      # Scoring checklist
+│   ├── senior-rubric.md      # Scoring checklist (68 points)
 │   ├── writing-rules.md      # Content guidelines
 │   └── nda-handling.md       # Confidentiality guide
+├── research/
+│   └── case-study-patterns.md # Analysis of 12 senior portfolios
 ├── examples/
 │   └── fictional-case-study/ # Complete example
 ├── cursor-plugin.json        # Plugin manifest
@@ -118,6 +121,15 @@ Reference document explaining:
 - How to demonstrate seniority
 - NDA handling guidance
 
+### `/case-study/style-presets`
+
+Selects presentation style based on content type:
+- **Interactive Narrative** (Sanvithi-style): Pinned scrollytelling, numbered phases
+- **Editorial Long-form**: Article-style continuous flow
+- **Data/Metrics-Led**: Metrics prominent, technical depth
+- **Visual Campaign**: Gallery-focused, minimal text
+- **Design System Doc**: Component-focused, systematic
+
 ### `/case-study/page-generator`
 
 Creates Next.js pages that match your portfolio:
@@ -155,20 +167,38 @@ A complete senior case study includes:
 
 ## Components Included
 
-### Tailwind Templates
+Each styling system includes **17 components**: 10 core layout components and 7 interaction components.
+
+### Core Components
 
 ```tsx
 import {
-  Hero,
-  SectionBlock,
-  ImageWithCaption,
-  BeforeAfter,
-  MetricCallout,
-  Quote,
-  DecisionCard,
-  TableOfContents,
-  NextProject,
-  MetaGrid
+  Hero,              // Title, outcome, metadata
+  SectionBlock,      // Section with heading
+  ImageWithCaption,  // Image + caption
+  BeforeAfter,       // Side-by-side comparison
+  MetricCallout,     // Impact metrics grid
+  Quote,             // User/stakeholder quotes
+  DecisionCard,      // Design decisions with rationale
+  TableOfContents,   // Section navigation
+  NextProject,       // CTA to next case study
+  MetaGrid           // Metadata display
+} from 'casestack/templates/tailwind';
+```
+
+### Interaction Components
+
+Based on analysis of 12 senior designer portfolios:
+
+```tsx
+import {
+  ScrollytellingSection, // Pinned text + transitioning images (Sanvithi-style)
+  ScrollProgress,         // Chapter-based navigation with progress bar
+  ScrollReveal,           // Fade/slide in on scroll
+  CountUpMetric,          // Animated number counting
+  ImageComparisonSlider,  // Before/after with draggable divider
+  HorizontalGallery,      // Horizontal scroll image gallery
+  NumberedPhase           // Phase progression indicator (1/3)
 } from 'casestack/templates/tailwind';
 ```
 
@@ -177,6 +207,19 @@ All components are:
 - WCAG AA accessible
 - Dark mode compatible
 - TypeScript typed
+- `prefers-reduced-motion` compliant
+
+### Style Preset Component Usage
+
+| Component | Interactive | Editorial | Data | Visual | Design System |
+|-----------|-------------|-----------|------|--------|---------------|
+| ScrollytellingSection | ✅ Primary | - | - | - | - |
+| ScrollProgress | ✅ | - | - | - | ✅ |
+| ScrollReveal | ✅ | ✅ Subtle | ✅ | ✅ Dramatic | ✅ |
+| CountUpMetric | ✅ | - | ✅ Primary | - | ✅ |
+| ImageComparisonSlider | ✅ | - | ✅ Primary | - | ✅ |
+| HorizontalGallery | ✅ | - | - | ✅ Primary | - |
+| NumberedPhase | ✅ Primary | - | - | - | ✅ |
 
 ## Validation
 
@@ -194,8 +237,9 @@ npx casestack validate ./content/my-case-study.json
 
 ## Senior Rubric Checklist
 
-The rubric scores these seniority signals:
+The rubric scores three categories (68 points total):
 
+### Seniority Signals (21 points)
 | Signal | What it looks like |
 |--------|-------------------|
 | **Ownership** | Defined the approach, not just executed |
@@ -206,7 +250,22 @@ The rubric scores these seniority signals:
 | **Collaboration** | Worked effectively across functions |
 | **Growth** | Showed learning and self-awareness |
 
-Target score: **30+/36** for section completeness, **15+/21** for seniority signals.
+### Section Completeness (36 points)
+- Hero, TL;DR, Context, Role, Constraints
+- Research, Problem Framing, Process
+- Solution, Validation, Impact, Reflection
+
+### Presentation Patterns (11 points)
+- Outcome-first framing (+1)
+- Clear numbered progression (+1)
+- Visual evidence (+1)
+- Constraints honesty (+1)
+- Forward thinking (+1)
+- Interaction quality (0-3)
+- Mobile responsiveness (+1)
+- Accessibility compliance (+1)
+
+Target score: **48+/68** for strong senior level.
 
 ## Writing Rules
 

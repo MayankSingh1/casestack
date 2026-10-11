@@ -65,6 +65,7 @@ const skills = [
   'skills/case-study/interview/SKILL.md',
   'skills/case-study/write/SKILL.md',
   'skills/case-study/architecture/SKILL.md',
+  'skills/case-study/style-presets/SKILL.md',
   'skills/case-study/page-generator/SKILL.md',
   'skills/case-study/review/SKILL.md'
 ];
@@ -90,12 +91,20 @@ for (const ref of references) {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// Templates - All 4 styling systems with all 10 components
+// Research
+// ═══════════════════════════════════════════════════════════════
+
+console.log('\n🔬 Research\n');
+
+check('research/case-study-patterns.md exists', fileExists('research/case-study-patterns.md'));
+
+// ═══════════════════════════════════════════════════════════════
+// Templates - All 4 styling systems with all 17 components
 // ═══════════════════════════════════════════════════════════════
 
 console.log('\n🎨 Templates\n');
 
-const REQUIRED_COMPONENTS = [
+const CORE_COMPONENTS = [
   'Hero',
   'SectionBlock',
   'ImageWithCaption',
@@ -107,6 +116,18 @@ const REQUIRED_COMPONENTS = [
   'NextProject',
   'MetaGrid'
 ];
+
+const INTERACTION_COMPONENTS = [
+  'ScrollytellingSection',
+  'ScrollProgress',
+  'ScrollReveal',
+  'CountUpMetric',
+  'ImageComparisonSlider',
+  'HorizontalGallery',
+  'NumberedPhase'
+];
+
+const REQUIRED_COMPONENTS = [...CORE_COMPONENTS, ...INTERACTION_COMPONENTS];
 
 const TEMPLATE_SYSTEMS = [
   { name: 'tailwind', ext: '.tsx' },
@@ -132,12 +153,16 @@ for (const system of TEMPLATE_SYSTEMS) {
     const allExported = REQUIRED_COMPONENTS.every(comp => 
       indexContent.includes(`export { ${comp} }`)
     );
-    check(`    index.ts exports all 10 components`, allExported);
+    check(`    index.ts exports all 17 components`, allExported);
   }
   
   // Check CSS modules have corresponding .module.css files
   if (system.name === 'css-modules') {
-    for (const component of REQUIRED_COMPONENTS) {
+    for (const component of CORE_COMPONENTS) {
+      const cssPath = `templates/css-modules/${component}.module.css`;
+      check(`    ${component}.module.css`, fileExists(cssPath));
+    }
+    for (const component of INTERACTION_COMPONENTS) {
       const cssPath = `templates/css-modules/${component}.module.css`;
       check(`    ${component}.module.css`, fileExists(cssPath));
     }
@@ -234,11 +259,15 @@ if (pkg) {
 console.log('\n📊 Template Completeness Summary\n');
 
 for (const system of TEMPLATE_SYSTEMS) {
-  const componentCount = REQUIRED_COMPONENTS.filter(comp => 
+  const coreCount = CORE_COMPONENTS.filter(comp => 
     fileExists(`templates/${system.name}/${comp}.tsx`)
   ).length;
-  const status = componentCount === 10 ? '✅' : '❌';
-  console.log(`${status} ${system.name}: ${componentCount}/10 components`);
+  const interactionCount = INTERACTION_COMPONENTS.filter(comp => 
+    fileExists(`templates/${system.name}/${comp}.tsx`)
+  ).length;
+  const totalCount = coreCount + interactionCount;
+  const status = totalCount === 17 ? '✅' : '❌';
+  console.log(`${status} ${system.name}: ${totalCount}/17 components (${coreCount} core + ${interactionCount} interaction)`);
 }
 
 // ═══════════════════════════════════════════════════════════════

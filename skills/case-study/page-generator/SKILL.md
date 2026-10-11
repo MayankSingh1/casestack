@@ -302,6 +302,162 @@ Features:
 - Thumbnail preview
 - Hover state
 
+## Interaction Components
+
+These components enable advanced scroll-based interactions. Use based on the selected style preset.
+
+### ScrollytellingSection (Interactive Narrative preset)
+
+```tsx
+// components/case-study/ScrollytellingSection.tsx
+interface ScrollytellingSlide {
+  image: string;
+  alt: string;
+  caption?: string;
+}
+
+interface ScrollytellingSectionProps {
+  id: string;
+  number?: string;  // "1/3", "2/3", etc.
+  title: string;
+  description: string;
+  slides: ScrollytellingSlide[];
+}
+```
+
+Features:
+- **Pinned text column** stays fixed while images transition
+- Scroll progress drives image changes
+- Numbered section indicator
+- Click-to-jump slide indicators
+- Respects `prefers-reduced-motion` (falls back to stacked layout)
+- Mobile: Collapses to vertical stack
+
+**Implementation notes**:
+- Uses native scroll position tracking (no GSAP dependency)
+- Section height = (slides.length + 1) * 100vh
+- Images cross-fade on state change
+
+### ScrollProgress
+
+```tsx
+// components/case-study/ScrollProgress.tsx
+interface Chapter {
+  id: string;
+  title: string;
+}
+
+interface ScrollProgressProps {
+  chapters: Chapter[];
+  showPercentage?: boolean;
+}
+```
+
+Features:
+- Fixed progress bar at top
+- Chapter navigation links
+- Active chapter highlighting
+- Smooth scroll to section on click
+- Optional percentage display
+
+### ScrollReveal
+
+```tsx
+// components/case-study/ScrollReveal.tsx
+interface ScrollRevealProps {
+  children: React.ReactNode;
+  direction?: 'up' | 'down' | 'left' | 'right' | 'none';
+  delay?: number;      // ms
+  duration?: number;   // ms (default 600)
+  className?: string;
+}
+```
+
+Features:
+- Intersection Observer-based reveal
+- Configurable direction and timing
+- One-time animation (doesn't replay on scroll up)
+- Respects `prefers-reduced-motion`
+
+### CountUpMetric (Data/Metrics preset)
+
+```tsx
+// components/case-study/CountUpMetric.tsx
+interface CountUpMetricProps {
+  value: number;
+  prefix?: string;    // "$", etc.
+  suffix?: string;    // "%", "M", etc.
+  label: string;
+  duration?: number;  // ms (default 2000)
+  decimals?: number;  // decimal places
+}
+```
+
+Features:
+- Animated number counting on scroll into view
+- Eased animation (easeOutQuart)
+- Locale-aware number formatting
+- Respects `prefers-reduced-motion`
+
+### ImageComparisonSlider (Data/Metrics preset)
+
+```tsx
+// components/case-study/ImageComparisonSlider.tsx
+interface ImageComparisonSliderProps {
+  beforeImage: string;
+  afterImage: string;
+  beforeAlt: string;
+  afterAlt: string;
+  beforeLabel?: string;  // default "Before"
+  afterLabel?: string;   // default "After"
+}
+```
+
+Features:
+- Draggable divider to compare images
+- Touch and mouse support
+- Keyboard accessible (arrow keys)
+- Labels appear based on slider position
+
+### HorizontalGallery (Visual Campaign preset)
+
+```tsx
+// components/case-study/HorizontalGallery.tsx
+interface GalleryImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+interface HorizontalGalleryProps {
+  images: GalleryImage[];
+  aspectRatio?: '16/9' | '4/3' | '3/2' | '1/1';
+}
+```
+
+Features:
+- Horizontal scroll with snap
+- Arrow navigation on hover
+- Touch swipe support
+- Responsive widths (85vw mobile, 50vw desktop)
+
+### NumberedPhase (Interactive Narrative preset)
+
+```tsx
+// components/case-study/NumberedPhase.tsx
+interface NumberedPhaseProps {
+  current: number;
+  total: number;
+  title: string;
+  showProgress?: boolean;
+}
+```
+
+Features:
+- Phase indicator (1/3, 2/3, 3/3)
+- Optional progress bar
+- Creates narrative progression
+
 ## Page Structure
 
 ### App Router (`app/work/[slug]/page.tsx`)
@@ -451,6 +607,112 @@ Based on detected styling system, use corresponding template:
 | CSS Modules | `templates/css-modules/` |
 | styled-components | `templates/styled-components/` |
 | Emotion | `templates/emotion/` |
+
+Each template provides 17 components:
+- **Core (10)**: Hero, SectionBlock, ImageWithCaption, BeforeAfter, MetricCallout, Quote, DecisionCard, TableOfContents, NextProject, MetaGrid
+- **Interaction (7)**: ScrollytellingSection, ScrollProgress, ScrollReveal, CountUpMetric, ImageComparisonSlider, HorizontalGallery, NumberedPhase
+
+## Preset Application
+
+Apply the selected style preset from `style-presets/SKILL.md`:
+
+### Interactive Narrative Preset
+```tsx
+import {
+  Hero, SectionBlock, ScrollytellingSection, ScrollProgress,
+  ScrollReveal, CountUpMetric, NumberedPhase, MetricCallout
+} from '@/components/case-study';
+
+// Structure solution sections with scrollytelling
+<ScrollProgress chapters={[
+  { id: 'context', title: 'Context' },
+  { id: 'process', title: 'Process' },
+  { id: 'solution', title: 'Solution' },
+  { id: 'impact', title: 'Impact' },
+]} />
+
+<ScrollytellingSection
+  id="solution-1"
+  number="Design 1/3"
+  title="Feature Name"
+  description="What this feature does and why..."
+  slides={[
+    { image: '/images/feature-1a.png', alt: 'Initial state', caption: 'Starting point' },
+    { image: '/images/feature-1b.png', alt: 'Final state', caption: 'After redesign' },
+  ]}
+/>
+```
+
+### Editorial Long-form Preset
+```tsx
+import {
+  Hero, SectionBlock, ImageWithCaption, Quote, ScrollReveal
+} from '@/components/case-study';
+
+// Simple, continuous flow with subtle reveals
+<ScrollReveal direction="up" delay={100}>
+  <SectionBlock id="context" title="The Challenge">
+    <p>Long-form narrative text...</p>
+    <ImageWithCaption src="/images/research.png" alt="Research findings" />
+  </SectionBlock>
+</ScrollReveal>
+```
+
+### Data/Metrics-Led Preset
+```tsx
+import {
+  Hero, SectionBlock, CountUpMetric, ImageComparisonSlider,
+  BeforeAfter, DecisionCard
+} from '@/components/case-study';
+
+// Metrics prominent, comparisons emphasized
+<div className="grid grid-cols-3 gap-8">
+  <CountUpMetric value={35} suffix="%" label="Faster setup time" />
+  <CountUpMetric value={100} suffix="%" label="Team adoption" />
+  <CountUpMetric value={20} suffix="%" label="Error reduction" />
+</div>
+
+<ImageComparisonSlider
+  beforeImage="/images/old-flow.png"
+  afterImage="/images/new-flow.png"
+  beforeAlt="Previous flow with 12 steps"
+  afterAlt="New flow with 4 steps"
+/>
+```
+
+### Visual Campaign Preset
+```tsx
+import {
+  Hero, SectionBlock, HorizontalGallery, ImageWithCaption, ScrollReveal
+} from '@/components/case-study';
+
+// Gallery-focused, full-bleed imagery
+<HorizontalGallery
+  images={[
+    { src: '/images/campaign-1.jpg', alt: 'Hero banner', caption: 'Launch campaign' },
+    { src: '/images/campaign-2.jpg', alt: 'Social posts', caption: 'Social media' },
+    { src: '/images/campaign-3.jpg', alt: 'OOH placement', caption: 'Billboard' },
+  ]}
+  aspectRatio="16/9"
+/>
+```
+
+### Design System Doc Preset
+```tsx
+import {
+  Hero, SectionBlock, TableOfContents, BeforeAfter,
+  DecisionCard, NumberedPhase, ScrollProgress
+} from '@/components/case-study';
+
+// Systematic, scannable structure
+<TableOfContents items={tocItems} sticky />
+
+<NumberedPhase current={1} total={3} title="Audit existing components" />
+<BeforeAfter
+  before={{ src: '/images/button-old.png', alt: 'Inconsistent buttons', label: "Don't" }}
+  after={{ src: '/images/button-new.png', alt: 'Unified button system', label: 'Do' }}
+/>
+```
 
 ## Output Checklist
 

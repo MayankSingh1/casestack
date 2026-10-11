@@ -89,7 +89,24 @@ Before generating code, **read the portfolio repository**:
 
 Fall back to Tailwind if undetectable.
 
-### Step 6: Generate Page
+### Step 6: Select Style Preset
+
+Load and execute the **style-presets** sub-skill:
+
+```
+Read: skills/case-study/style-presets/SKILL.md
+```
+
+This determines the presentation style based on content type:
+- **Interactive Narrative** (Sanvithi-style) - Pinned scrollytelling, numbered phases
+- **Editorial Long-form** - Article-style continuous flow
+- **Data/Metrics-Led** - Metrics prominent, technical depth
+- **Visual Campaign** - Gallery-focused, minimal text
+- **Design System Doc** - Component-focused, systematic
+
+Ask user preference or auto-select based on content analysis.
+
+### Step 7: Generate Page
 
 Load and execute the **page-generator** sub-skill:
 
@@ -97,9 +114,9 @@ Load and execute the **page-generator** sub-skill:
 Read: skills/case-study/page-generator/SKILL.md
 ```
 
-This creates the Next.js route, components, and content files.
+This creates the Next.js route, components, and content files using the selected style preset.
 
-### Step 7: Review & Verify
+### Step 8: Review & Verify
 
 Load and execute the **review** sub-skill:
 
@@ -226,8 +243,23 @@ interface CaseStudy {
 | `interview` | Fill gaps via targeted questions | After ingest |
 | `write` | Generate narrative content | After interview |
 | `architecture` | Reference for section structure | Anytime (reference) |
+| `style-presets` | Select presentation style | Before page generation |
 | `page-generator` | Create Next.js page | After content ready |
 | `review` | Verify and score | After generation |
+
+## Interaction Components
+
+The following scroll-based interaction components are available across all styling systems:
+
+| Component | Purpose | Best Preset |
+|-----------|---------|-------------|
+| `ScrollytellingSection` | Pinned text while images transition | Interactive Narrative |
+| `ScrollProgress` | Chapter-based navigation with progress | Interactive Narrative |
+| `ScrollReveal` | Fade/slide in on scroll | All presets |
+| `CountUpMetric` | Animated number counting | Data/Metrics-Led |
+| `ImageComparisonSlider` | Before/after with draggable divider | Data/Metrics-Led |
+| `HorizontalGallery` | Horizontal scroll image gallery | Visual Campaign |
+| `NumberedPhase` | Phase progression indicator (1/3) | Interactive Narrative |
 
 ## Architecture Reference
 

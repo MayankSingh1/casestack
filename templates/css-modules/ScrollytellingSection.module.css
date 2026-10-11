@@ -1,0 +1,198 @@
+.section {
+  position: relative;
+}
+
+.sectionReduced {
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.pinWrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100vh;
+}
+
+.pinned {
+  position: fixed;
+  top: 0;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+  height: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 0 2rem;
+  }
+}
+
+.textColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+.number {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #2563eb;
+}
+
+.title {
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+@media (min-width: 640px) {
+  .title {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 2.25rem;
+  }
+}
+
+.description {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #475569;
+}
+
+.indicators {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.indicator {
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 9999px;
+  background-color: #cbd5e1;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicatorActive {
+  width: 2rem;
+  background-color: #2563eb;
+}
+
+.imageColumn {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slideActive {
+  opacity: 1;
+}
+
+.figure {
+  width: 100%;
+}
+
+.imageContainer {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 1rem;
+  background-color: #f1f5f9;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: #f1f5f9;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.caption {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.slidesStacked {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.slideStacked {
+  margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .number {
+    color: #60a5fa;
+  }
+
+  .title {
+    color: #fff;
+  }
+
+  .description {
+    color: #cbd5e1;
+  }
+
+  .indicator {
+    background-color: #475569;
+  }
+
+  .indicatorActive {
+    background-color: #60a5fa;
+  }
+
+  .imageContainer,
+  .imageWrapper {
+    background-color: #1e293b;
+  }
+
+  .caption {
+    color: #94a3b8;
+  }
+}

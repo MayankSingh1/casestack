@@ -8,3 +8,11 @@ export { DecisionCard } from './DecisionCard';
 export { TableOfContents } from './TableOfContents';
 export { NextProject } from './NextProject';
 export { MetaGrid } from './MetaGrid';
+
+export { ScrollytellingSection } from './ScrollytellingSection';
+export { ScrollProgress } from './ScrollProgress';
+export { ScrollReveal } from './ScrollReveal';
+export { CountUpMetric } from './CountUpMetric';
+export { ImageComparisonSlider } from './ImageComparisonSlider';
+export { HorizontalGallery } from './HorizontalGallery';
+export { NumberedPhase } from './NumberedPhase';

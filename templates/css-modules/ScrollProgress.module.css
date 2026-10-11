@@ -1,0 +1,100 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+}
+
+.progressBar {
+  height: 0.25rem;
+  background-color: #2563eb;
+  transition: width 0.15s ease;
+}
+
+.nav {
+  border-bottom: 1px solid #e2e8f0;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0.75rem 2rem;
+  }
+}
+
+.chapters {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  overflow-x: auto;
+}
+
+.chapter {
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #475569;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.chapter:hover {
+  color: #0f172a;
+}
+
+.chapterActive {
+  color: #2563eb;
+}
+
+.percentage {
+  margin-left: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+}
+
+@media (prefers-color-scheme: dark) {
+  .progressBar {
+    background-color: #60a5fa;
+  }
+
+  .nav {
+    border-bottom-color: #1e293b;
+    background-color: rgba(15, 23, 42, 0.8);
+  }
+
+  .chapter {
+    color: #94a3b8;
+  }
+
+  .chapter:hover {
+    color: #fff;
+  }
+
+  .chapterActive {
+    color: #60a5fa;
+  }
+
+  .percentage {
+    color: #94a3b8;
+  }
+}

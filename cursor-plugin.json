@@ -38,9 +38,14 @@
       "description": "Reference for senior case-study architecture and what hiring managers look for."
     },
     {
+      "name": "case-study/style-presets",
+      "path": "skills/case-study/style-presets/SKILL.md",
+      "description": "Select presentation style preset based on content type (Interactive Narrative, Editorial, Data/Metrics, Visual Campaign, Design System Doc)."
+    },
+    {
       "name": "case-study/page-generator",
       "path": "skills/case-study/page-generator/SKILL.md",
-      "description": "Generate Next.js case study pages matching the portfolio's existing conventions."
+      "description": "Generate Next.js case study pages matching the portfolio's existing conventions and selected style preset."
     },
     {
       "name": "case-study/review",
@@ -57,7 +62,8 @@
   "references": [
     "references/senior-rubric.md",
     "references/writing-rules.md",
-    "references/nda-handling.md"
+    "references/nda-handling.md",
+    "research/case-study-patterns.md"
   ],
   "platforms": ["cursor", "claude-code", "codex"]
 }

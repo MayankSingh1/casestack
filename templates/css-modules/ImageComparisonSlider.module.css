@@ -1,0 +1,89 @@
+.container {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  cursor: ew-resize;
+  user-select: none;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: #f1f5f9;
+}
+
+.afterImage {
+  position: absolute;
+  inset: 0;
+}
+
+.beforeImage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.labelBefore {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background-color: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(4px);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #fff;
+  transition: opacity 0.2s ease;
+}
+
+.labelAfter {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background-color: #059669;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #fff;
+  transition: opacity 0.2s ease;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0.25rem;
+  cursor: ew-resize;
+  background-color: #fff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transform: translateX(-50%);
+}
+
+.sliderHandle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.sliderIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #475569;
+}
+
+@media (prefers-color-scheme: dark) {
+  .container {
+    background-color: #1e293b;
+  }
+}

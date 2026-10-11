@@ -387,6 +387,86 @@ For a case study to read as senior-level:
 
 ---
 
+## Presentation Patterns (Bonus Points)
+
+Based on analysis of 12 senior designer portfolios, these patterns elevate case studies:
+
+### Outcome-First Framing (+1)
+- Impact visible in first viewport
+- Lead with result, not process
+- Hero includes key metric
+
+### Clear Progression (+1)
+- Phases/steps numbered (1/3, 2/3, 3/3)
+- Creates narrative arc
+- Reader knows where they are in the story
+
+### Visual Evidence (+1)
+- Solution sections show, not just tell
+- Annotated screenshots
+- Before/after comparisons
+
+### Constraints Honesty (+1)
+- Limitations acknowledged explicitly
+- What couldn't be done is stated
+- Time/resource constraints mentioned
+
+### Forward Thinking (+1)
+- "What's next" section included
+- Future improvements documented
+- Shows strategic thinking beyond launch
+
+### Interaction Quality (0-3)
+
+| Score | Criteria |
+|-------|----------|
+| 0 | Static page, no interactivity |
+| 1 | Basic scroll reveals |
+| 2 | Meaningful interactions (galleries, comparisons) |
+| 3 | Intentional narrative interactions (scrollytelling, pinned sections) |
+
+**Best-in-class examples:**
+- Sanvithi-style pinned scrollytelling
+- Image comparison sliders
+- Animated metrics on scroll
+- Horizontal galleries for visual work
+
+### Mobile Responsiveness (+1)
+- All sections work on mobile
+- Complex interactions collapse appropriately
+- Navigation adapts to small screens
+
+### Accessibility (+1)
+- `prefers-reduced-motion` respected
+- Keyboard navigation works
+- Focus states visible
+- WCAG AA contrast ratios
+
+---
+
+## Updated Scoring Summary
+
+### Total Possible Points
+
+| Category | Max Points |
+|----------|------------|
+| Seniority Signals | 21 |
+| Section Completeness | 36 |
+| Presentation Patterns | 11 |
+| **Total** | **68** |
+
+### Updated Interpretation
+
+| Score Range | Assessment |
+|-------------|------------|
+| 58-68 | Exceptional senior presentation |
+| 48-57 | Strong senior level |
+| 38-47 | Solid, some gaps |
+| 28-37 | Needs strengthening |
+| Below 28 | Significant gaps |
+
+---
+
 ## Red Flags (Immediate Concerns)
 
 - **No metrics**: Even relative ones matter
@@ -396,3 +476,6 @@ For a case study to read as senior-level:
 - **Wall of text**: No visual breaks
 - **Generic learnings**: "I learned to communicate better"
 - **No user evidence**: No research or quotes
+- **Static, unengaging presentation**: No scroll interactions or visual polish
+- **Ignores reduced motion**: Animations don't respect accessibility preferences
+- **Broken on mobile**: Desktop-only layout

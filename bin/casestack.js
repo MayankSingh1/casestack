@@ -2,54 +2,53 @@
 
 const fs = require('fs');
 const path = require('path');
-
-const PLATFORMS = {
-  cursor: {
-    skillDir: '.cursor/skills',
-    configFile: null,
-    description: 'Cursor IDE'
-  },
-  'claude-code': {
-    skillDir: '.claude/skills',
-    configFile: null,
-    description: 'Claude Code'
-  },
-  codex: {
-    skillDir: '.codex/skills',
-    configFile: null,
-    description: 'Codex'
-  }
-};
+const os = require('os');
 
 const PACKAGE_ROOT = path.resolve(__dirname, '..');
+const SKILL_NAME = 'casestack';
+const VERSION = require('../package.json').version;
+
+const GLOBAL_SKILL_DIR = path.join(os.homedir(), '.cursor', 'skills');
+const PROJECT_SKILL_DIR = '.cursor/skills';
 
 function printHelp() {
   console.log(`
-casestack - Portfolio Case Study Generator
+casestack-skills v${VERSION}
+Portfolio Case Study Generator for Cursor, Claude Code, and Codex
 
 USAGE:
-  npx casestack init --platform <platform>
-  npx casestack validate [path]
-  npx casestack help
+  npx casestack-skills <command> [options]
 
 COMMANDS:
-  init       Install casestack skills to your project
-  validate   Validate a case study content file
-  help       Show this help message
+  install      Install casestack skills
+  uninstall    Remove casestack skills
+  list         Show installed skills and location
+  validate     Validate package structure
+  help         Show this help message
 
 OPTIONS:
-  --platform <platform>  Target platform: cursor, claude-code, or codex
-
-PLATFORMS:
-  cursor       Cursor IDE (.cursor/skills/)
-  claude-code  Claude Code (.claude/skills/)
-  codex        Codex (.codex/skills/)
+  --global, -g    Install to ~/.cursor/skills/ (default)
+  --project       Install to ./.cursor/skills/ in current directory
 
 EXAMPLES:
-  npx casestack init --platform cursor
-  npx casestack validate ./content/case-study.json
-  npx casestack validate ./examples/fictional-case-study/content.json
+  npx casestack-skills install              # Install globally
+  npx casestack-skills install --project    # Install to current project
+  npx casestack-skills uninstall            # Remove global installation
+  npx casestack-skills list                 # Show what's installed
+
+MANUAL INSTALL:
+  Copy the following directories to your skills folder:
+    - skills/case-study/  -> ~/.cursor/skills/casestack/case-study/
+    - templates/          -> ~/.cursor/skills/casestack/templates/
+    - references/         -> ~/.cursor/skills/casestack/references/
 `);
+}
+
+function getSkillDir(isProject) {
+  if (isProject) {
+    return path.join(process.cwd(), PROJECT_SKILL_DIR, SKILL_NAME);
+  }
+  return path.join(GLOBAL_SKILL_DIR, SKILL_NAME);
 }
 
 function copyRecursive(src, dest) {
@@ -66,224 +65,228 @@ function copyRecursive(src, dest) {
   }
 }
 
-function init(platform) {
-  if (!platform) {
-    console.error('Error: --platform is required');
-    console.error('Usage: npx casestack init --platform <cursor|claude-code|codex>');
-    process.exit(1);
-  }
-
-  const platformConfig = PLATFORMS[platform];
-  if (!platformConfig) {
-    console.error(`Error: Unknown platform "${platform}"`);
-    console.error('Valid platforms: cursor, claude-code, codex');
-    process.exit(1);
-  }
-
-  const cwd = process.cwd();
-  const skillsDir = path.join(cwd, platformConfig.skillDir, 'casestack');
-  const referencesDir = path.join(cwd, platformConfig.skillDir, 'casestack', 'references');
+function removeRecursive(dir) {
+  if (!fs.existsSync(dir)) return;
   
-  console.log(`\nInstalling casestack for ${platformConfig.description}...\n`);
+  const files = fs.readdirSync(dir);
+  for (const file of files) {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+    if (stat.isDirectory()) {
+      removeRecursive(filePath);
+    } else {
+      fs.unlinkSync(filePath);
+    }
+  }
+  fs.rmdirSync(dir);
+}
 
-  // Create directories
-  fs.mkdirSync(skillsDir, { recursive: true });
-  fs.mkdirSync(referencesDir, { recursive: true });
+function countFiles(dir) {
+  if (!fs.existsSync(dir)) return 0;
+  let count = 0;
+  const items = fs.readdirSync(dir);
+  for (const item of items) {
+    const itemPath = path.join(dir, item);
+    const stat = fs.statSync(itemPath);
+    if (stat.isDirectory()) {
+      count += countFiles(itemPath);
+    } else {
+      count++;
+    }
+  }
+  return count;
+}
+
+function install(isProject) {
+  const destDir = getSkillDir(isProject);
+  const location = isProject ? 'project' : 'global';
+  const displayPath = isProject ? PROJECT_SKILL_DIR : '~/.cursor/skills';
+
+  console.log(`\nInstalling casestack-skills v${VERSION} (${location})...\n`);
+
+  if (fs.existsSync(destDir)) {
+    console.log(`Removing existing installation at ${destDir}...`);
+    removeRecursive(destDir);
+  }
+
+  fs.mkdirSync(destDir, { recursive: true });
 
   // Copy skills
   const srcSkills = path.join(PACKAGE_ROOT, 'skills', 'case-study');
-  copyRecursive(srcSkills, path.join(skillsDir, 'case-study'));
-  console.log(`✓ Copied skills to ${platformConfig.skillDir}/casestack/case-study/`);
-
-  // Copy references
-  const srcRefs = path.join(PACKAGE_ROOT, 'references');
-  copyRecursive(srcRefs, referencesDir);
-  console.log(`✓ Copied references to ${platformConfig.skillDir}/casestack/references/`);
+  const destSkills = path.join(destDir, 'case-study');
+  copyRecursive(srcSkills, destSkills);
+  const skillFiles = countFiles(destSkills);
+  console.log(`✓ Copied skills (${skillFiles} files)`);
 
   // Copy templates
   const srcTemplates = path.join(PACKAGE_ROOT, 'templates');
-  const destTemplates = path.join(skillsDir, 'templates');
+  const destTemplates = path.join(destDir, 'templates');
   copyRecursive(srcTemplates, destTemplates);
-  console.log(`✓ Copied templates to ${platformConfig.skillDir}/casestack/templates/`);
+  const templateFiles = countFiles(destTemplates);
+  console.log(`✓ Copied templates (${templateFiles} files)`);
+
+  // Copy references
+  const srcRefs = path.join(PACKAGE_ROOT, 'references');
+  const destRefs = path.join(destDir, 'references');
+  copyRecursive(srcRefs, destRefs);
+  const refFiles = countFiles(destRefs);
+  console.log(`✓ Copied references (${refFiles} files)`);
+
+  // Copy skill.json
+  const srcMeta = path.join(PACKAGE_ROOT, 'skill.json');
+  if (fs.existsSync(srcMeta)) {
+    fs.copyFileSync(srcMeta, path.join(destDir, 'skill.json'));
+    console.log(`✓ Copied skill.json`);
+  }
+
+  const totalFiles = skillFiles + templateFiles + refFiles + 1;
 
   console.log(`
-Installation complete!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Installed ${totalFiles} files to ${displayPath}/${SKILL_NAME}/
 
-To use casestack, ask your AI assistant:
-  "I want to create a case study for my recent project"
+Skills:
+  • case-study (main router)
+  • case-study/ingest
+  • case-study/interview
+  • case-study/write
+  • case-study/architecture
+  • case-study/style-presets
+  • case-study/page-generator
+  • case-study/review
 
-Or reference the skill directly:
-  "Use the case-study skill to help me document my checkout redesign"
-
-Skills installed:
-  - case-study (main router)
-  - case-study/ingest
-  - case-study/interview
-  - case-study/write
-  - case-study/architecture
-  - case-study/page-generator
-  - case-study/review
+Templates (17 components × 4 styling systems):
+  • tailwind/
+  • css-modules/
+  • styled-components/
+  • emotion/
 
 References:
-  - senior-rubric.md
-  - writing-rules.md
-  - nda-handling.md
+  • senior-rubric.md (68-point scoring)
+  • writing-rules.md
+  • nda-handling.md
+
+To create a case study, ask your AI assistant:
+  "Use the case-study skill to document my project"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 `);
 }
 
-function validate(filePath) {
-  if (!filePath) {
-    // Default to example
-    filePath = path.join(PACKAGE_ROOT, 'examples', 'fictional-case-study', 'content.json');
-    console.log('No file specified. Validating example case study...\n');
+function uninstall(isProject) {
+  const destDir = getSkillDir(isProject);
+  const location = isProject ? 'project' : 'global';
+
+  console.log(`\nUninstalling casestack-skills (${location})...\n`);
+
+  if (!fs.existsSync(destDir)) {
+    console.log(`⚠️  No installation found at ${destDir}`);
+    return;
   }
 
-  const absolutePath = path.isAbsolute(filePath) ? filePath : path.resolve(process.cwd(), filePath);
+  const fileCount = countFiles(destDir);
+  removeRecursive(destDir);
 
-  if (!fs.existsSync(absolutePath)) {
-    console.error(`Error: File not found: ${absolutePath}`);
-    process.exit(1);
-  }
+  console.log(`✅ Removed ${fileCount} files from ${destDir}\n`);
+}
 
-  let content;
-  try {
-    const raw = fs.readFileSync(absolutePath, 'utf8');
-    content = JSON.parse(raw);
-  } catch (e) {
-    console.error(`Error: Failed to parse JSON: ${e.message}`);
-    process.exit(1);
-  }
+function list() {
+  console.log(`\ncasestack-skills v${VERSION}\n`);
+  console.log('Checking installations:\n');
 
-  console.log(`Validating: ${absolutePath}\n`);
+  const globalDir = path.join(GLOBAL_SKILL_DIR, SKILL_NAME);
+  const projectDir = path.join(process.cwd(), PROJECT_SKILL_DIR, SKILL_NAME);
 
-  const errors = [];
-  const warnings = [];
+  let found = false;
 
-  // Required fields
-  const requiredFields = [
-    'meta.slug',
-    'meta.title',
-    'meta.role',
-    'hero.title',
-    'hero.outcome',
-    'tldr',
-    'context.businessProblem',
-    'myRole.responsibilities',
-    'research.methods',
-    'research.keyFindings',
-    'solution.overview',
-    'impact.metrics'
-  ];
-
-  for (const field of requiredFields) {
-    const value = field.split('.').reduce((obj, key) => obj?.[key], content);
-    if (!value || (Array.isArray(value) && value.length === 0)) {
-      errors.push(`Missing required field: ${field}`);
+  if (fs.existsSync(globalDir)) {
+    const count = countFiles(globalDir);
+    console.log(`✅ Global:  ~/.cursor/skills/${SKILL_NAME}/ (${count} files)`);
+    
+    // List sub-skills
+    const skillsDir = path.join(globalDir, 'case-study');
+    if (fs.existsSync(skillsDir)) {
+      const skills = fs.readdirSync(skillsDir).filter(f => 
+        fs.statSync(path.join(skillsDir, f)).isDirectory() || f === 'SKILL.md'
+      );
+      console.log(`            Skills: ${skills.length}`);
     }
-  }
-
-  // Recommended fields
-  const recommendedFields = [
-    'constraints',
-    'problemFraming.hmw',
-    'problemFraming.successMetrics',
-    'process',
-    'validation.testing',
-    'reflection.learnings'
-  ];
-
-  for (const field of recommendedFields) {
-    const value = field.split('.').reduce((obj, key) => obj?.[key], content);
-    if (!value || (Array.isArray(value) && value.length === 0)) {
-      warnings.push(`Missing recommended field: ${field}`);
+    
+    // List templates
+    const templatesDir = path.join(globalDir, 'templates');
+    if (fs.existsSync(templatesDir)) {
+      const templates = fs.readdirSync(templatesDir).filter(f => 
+        fs.statSync(path.join(templatesDir, f)).isDirectory()
+      );
+      console.log(`            Templates: ${templates.join(', ')}`);
     }
-  }
-
-  // Content quality checks
-  if (content.tldr && content.tldr.split(' ').length > 100) {
-    warnings.push('TL;DR exceeds recommended 80 words');
-  }
-
-  if (content.research?.keyFindings && content.research.keyFindings.length < 2) {
-    warnings.push('Research should have at least 2-3 key findings');
-  }
-
-  if (content.impact?.metrics && content.impact.metrics.length < 1) {
-    errors.push('Impact section should have at least one metric');
-  }
-
-  if (content.process && content.process.length > 0) {
-    for (let i = 0; i < content.process.length; i++) {
-      const phase = content.process[i];
-      if (!phase.decisions || phase.decisions.length === 0) {
-        warnings.push(`Process phase "${phase.phase}" has no decisions documented`);
-      }
-    }
-  }
-
-  // Asset references
-  if (content.assets?.images) {
-    for (const img of content.assets.images) {
-      if (!img.alt) {
-        warnings.push(`Image missing alt text: ${img.path}`);
-      }
-    }
-  }
-
-  // Print results
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  
-  if (errors.length === 0 && warnings.length === 0) {
-    console.log('✅ PASSED - No issues found\n');
-    console.log(`Title: ${content.meta?.title || 'Unknown'}`);
-    console.log(`Role: ${content.meta?.role || 'Unknown'}`);
-    console.log(`Company: ${content.meta?.company || 'Unknown'}`);
-    process.exit(0);
-  }
-
-  if (errors.length > 0) {
-    console.log(`\n❌ ERRORS (${errors.length}):`);
-    for (const error of errors) {
-      console.log(`   • ${error}`);
-    }
-  }
-
-  if (warnings.length > 0) {
-    console.log(`\n⚠️  WARNINGS (${warnings.length}):`);
-    for (const warning of warnings) {
-      console.log(`   • ${warning}`);
-    }
-  }
-
-  console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  
-  if (errors.length > 0) {
-    console.log('\n❌ FAILED - Fix errors above');
-    process.exit(1);
+    
+    found = true;
   } else {
-    console.log('\n✅ PASSED with warnings');
-    process.exit(0);
+    console.log(`○  Global:  Not installed`);
+  }
+
+  if (fs.existsSync(projectDir)) {
+    const count = countFiles(projectDir);
+    console.log(`✅ Project: .cursor/skills/${SKILL_NAME}/ (${count} files)`);
+    found = true;
+  } else {
+    console.log(`○  Project: Not installed in ${process.cwd()}`);
+  }
+
+  if (!found) {
+    console.log(`
+To install:
+  npx casestack-skills install              # Global
+  npx casestack-skills install --project    # This project
+`);
+  }
+
+  console.log('');
+}
+
+function runValidate() {
+  const validateScript = path.join(PACKAGE_ROOT, 'validate.js');
+  if (fs.existsSync(validateScript)) {
+    require(validateScript);
+  } else {
+    console.error('Error: validate.js not found');
+    process.exit(1);
   }
 }
 
 // Parse arguments
 const args = process.argv.slice(2);
 const command = args[0];
+const isProject = args.includes('--project');
+const isGlobal = args.includes('--global') || args.includes('-g');
 
 if (!command || command === 'help' || command === '--help' || command === '-h') {
   printHelp();
   process.exit(0);
 }
 
-if (command === 'init') {
-  const platformIndex = args.indexOf('--platform');
-  const platform = platformIndex !== -1 ? args[platformIndex + 1] : null;
-  init(platform);
-} else if (command === 'validate') {
-  const filePath = args[1];
-  validate(filePath);
-} else {
-  console.error(`Unknown command: ${command}`);
-  console.error('Run "npx casestack help" for usage');
-  process.exit(1);
+if (command === '--version' || command === '-v') {
+  console.log(`casestack-skills v${VERSION}`);
+  process.exit(0);
+}
+
+switch (command) {
+  case 'install':
+    install(isProject && !isGlobal);
+    break;
+  case 'uninstall':
+  case 'remove':
+    uninstall(isProject && !isGlobal);
+    break;
+  case 'list':
+  case 'ls':
+    list();
+    break;
+  case 'validate':
+    runValidate();
+    break;
+  default:
+    console.error(`Unknown command: ${command}`);
+    console.error('Run "npx casestack-skills help" for usage');
+    process.exit(1);
 }

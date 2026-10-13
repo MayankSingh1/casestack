@@ -1,6 +1,6 @@
 {
-  "name": "casestack",
-  "version": "1.0.0",
+  "name": "casestack-skills",
+  "version": "1.1.0",
   "description": "Turn raw project material into a polished portfolio case study in one go. A senior UX/product designer's skill package for Cursor, Claude Code, and Codex.",
   "main": "lib/init.js",
   "bin": {
@@ -29,14 +29,18 @@
     "skills/",
     "templates/",
     "references/",
-    "examples/",
-    "cursor-plugin.json"
+    "cursor-plugin.json",
+    "skill.json"
   ],
   "engines": {
     "node": ">=18.0.0"
   },
   "repository": {
     "type": "git",
-    "url": ""
-  }
+    "url": "git+https://github.com/MayankSingh1/casestack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MayankSingh1/casestack/issues"
+  },
+  "homepage": "https://github.com/MayankSingh1/casestack#readme"
 }

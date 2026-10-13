@@ -14,14 +14,50 @@ Casestack is an installable AI skill package that helps senior UX/product design
 
 ## Installation
 
+### Quick Install (Recommended)
+
 ```bash
-npx casestack init --platform <cursor|claude-code|codex>
+# Install globally to ~/.cursor/skills/
+npx casestack-skills install
+
+# Or install to current project only
+npx casestack-skills install --project
 ```
 
-This installs the skills to your project:
-- **Cursor**: `.cursor/skills/casestack/`
-- **Claude Code**: `.claude/skills/casestack/`
-- **Codex**: `.codex/skills/casestack/`
+### Other Commands
+
+```bash
+# List installed locations
+npx casestack-skills list
+
+# Remove installation
+npx casestack-skills uninstall
+
+# Validate package structure
+npx casestack-skills validate
+```
+
+### Manual Install
+
+Copy these directories to your skills folder:
+
+```bash
+# Global (recommended)
+~/.cursor/skills/casestack/
+├── case-study/      # Copy from skills/case-study/
+├── templates/       # Copy from templates/
+└── references/      # Copy from references/
+
+# Or project-local
+.cursor/skills/casestack/
+```
+
+### Install Locations
+
+| Mode | Path | Scope |
+|------|------|-------|
+| `--global` (default) | `~/.cursor/skills/casestack/` | All projects |
+| `--project` | `.cursor/skills/casestack/` | Current project |
 
 ## Usage
 

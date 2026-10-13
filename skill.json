@@ -1,0 +1,64 @@
+{
+  "name": "casestack",
+  "version": "1.1.0",
+  "displayName": "Casestack: Portfolio Case Study Generator",
+  "description": "Transform raw project material into senior-level portfolio case studies with structured content, gap-fill interviews, and production-ready Next.js pages.",
+  "author": "",
+  "license": "MIT",
+  "repository": "https://github.com/MayankSingh1/casestack",
+  "skills": [
+    {
+      "name": "case-study",
+      "path": "case-study/SKILL.md",
+      "description": "Main entry point for creating portfolio case studies",
+      "triggers": ["case study", "portfolio", "casestack", "design case", "UX case study"]
+    },
+    {
+      "name": "case-study/ingest",
+      "path": "case-study/ingest/SKILL.md",
+      "description": "Ingest project material and extract structured content"
+    },
+    {
+      "name": "case-study/interview",
+      "path": "case-study/interview/SKILL.md",
+      "description": "Gap-fill interview to capture missing senior case-study content"
+    },
+    {
+      "name": "case-study/write",
+      "path": "case-study/write/SKILL.md",
+      "description": "Generate case study content following senior rubric"
+    },
+    {
+      "name": "case-study/architecture",
+      "path": "case-study/architecture/SKILL.md",
+      "description": "Reference for senior case-study architecture"
+    },
+    {
+      "name": "case-study/style-presets",
+      "path": "case-study/style-presets/SKILL.md",
+      "description": "Select presentation style preset (Interactive Narrative, Editorial, etc.)"
+    },
+    {
+      "name": "case-study/page-generator",
+      "path": "case-study/page-generator/SKILL.md",
+      "description": "Generate Next.js case study pages"
+    },
+    {
+      "name": "case-study/review",
+      "path": "case-study/review/SKILL.md",
+      "description": "Score case study against senior rubric and verify build"
+    }
+  ],
+  "templates": {
+    "tailwind": "templates/tailwind/",
+    "css-modules": "templates/css-modules/",
+    "styled-components": "templates/styled-components/",
+    "emotion": "templates/emotion/"
+  },
+  "references": [
+    "references/senior-rubric.md",
+    "references/writing-rules.md",
+    "references/nda-handling.md"
+  ],
+  "platforms": ["cursor", "claude-code", "codex"]
+}

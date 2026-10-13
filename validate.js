@@ -47,11 +47,13 @@ function readJSON(filePath) {
 console.log('📦 Package Structure\n');
 
 check('package.json exists', fileExists('package.json'));
+check('skill.json exists', fileExists('skill.json'));
 check('cursor-plugin.json exists', fileExists('cursor-plugin.json'));
 check('bin/casestack.js exists', fileExists('bin/casestack.js'));
 check('lib/init.js exists', fileExists('lib/init.js'));
 check('validate.js exists', fileExists('validate.js'));
 check('README.md exists', fileExists('README.md'));
+check('CHANGELOG.md exists', fileExists('CHANGELOG.md'));
 
 // ═══════════════════════════════════════════════════════════════
 // Skills
@@ -241,7 +243,7 @@ console.log('\n⚙️  Package Configuration\n');
 const pkg = readJSON('package.json');
 
 if (pkg) {
-  check('package name is "casestack"', pkg.name === 'casestack');
+  check('package name is "casestack-skills"', pkg.name === 'casestack-skills');
   check('bin/casestack defined', !!pkg.bin?.casestack);
   check('main points to lib/init.js', pkg.main === 'lib/init.js');
   check('validate script defined', !!pkg.scripts?.validate);

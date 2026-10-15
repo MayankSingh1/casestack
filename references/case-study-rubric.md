@@ -1,10 +1,12 @@
-# Senior Case Study Rubric
+# Case Study Rubric
 
-A comprehensive scoring system for evaluating design portfolio case studies at the senior level.
+A scoring system for UX and product design case studies at every level, from student to principal.
 
-## Seniority Signals
+The same rubric applies to everyone. What counts as a passing score depends on the designer's level. See `references/career-levels.md` for per-level thresholds and priorities.
 
-What hiring managers look for when evaluating senior designers:
+## Level Signals
+
+What hiring managers look for. A student is not expected to score 3 on Strategy or Influence. A principal is.
 
 ### 1. Ownership (0-3 points)
 
@@ -77,7 +79,8 @@ What hiring managers look for when evaluating senior designers:
 **Evidence to look for:**
 - "I convinced stakeholders that..."
 - "This approach was adopted by other teams"
-- "I mentored junior designers on..."
+- "I mentored other designers on..." (senior and above)
+- "I asked for feedback from..." (student and junior)
 
 ### 4. Measurable Impact (0-3 points)
 
@@ -362,34 +365,35 @@ What hiring managers look for when evaluating senior designers:
 
 | Category | Max Points |
 |----------|------------|
-| Seniority Signals | 21 |
+| Level Signals | 21 |
 | Section Completeness | 36 |
 | **Total** | **57** |
 
 ### Interpretation
 
-| Score Range | Assessment |
-|-------------|------------|
-| 48-57 | Exceptional senior presentation |
-| 40-47 | Strong senior level |
-| 32-39 | Solid, some gaps |
-| 24-31 | Needs strengthening |
-| Below 24 | Significant gaps |
+Judge the score against the designer's level, not against a senior bar.
 
-### Minimum Senior Thresholds
+### Minimum Thresholds by Level
 
-For a case study to read as senior-level:
+| Level | Signals (/21) | Sections (/36) | Must hit |
+|-------|---------------|----------------|----------|
+| Student / Intern | ≥ 8 | ≥ 20 | Process ≥ 2, Reflection ≥ 2 |
+| Junior | ≥ 10 | ≥ 22 | Process ≥ 2, Role ≥ 2 |
+| Mid-level | ≥ 13 | ≥ 24 | Ownership ≥ 2, Process ≥ 2 |
+| Senior | ≥ 15 | ≥ 26 | Ownership ≥ 2, Impact ≥ 2, Process ≥ 2 |
+| Lead / Staff / Principal | ≥ 17 | ≥ 28 | Influence ≥ 3, Strategy ≥ 2, Impact ≥ 2 |
 
-- Ownership ≥ 2
-- Impact ≥ 2
-- Process & Decisions ≥ 2
-- Total Score ≥ 32
+If the designer set a `targetLevel` above their current level, score against the target.
+
+### Concept and Academic Projects
+
+For student, bootcamp, and concept work, score Impact on test results, task success, and feedback instead of business metrics. Do not mark the case study down for missing revenue numbers.
 
 ---
 
 ## Presentation Patterns (Bonus Points)
 
-Based on analysis of 12 senior designer portfolios, these patterns elevate case studies:
+Based on analysis of 12 senior designer portfolios. These patterns lift case studies at any level:
 
 ### Outcome-First Framing (+1)
 - Impact visible in first viewport
@@ -450,7 +454,7 @@ Based on analysis of 12 senior designer portfolios, these patterns elevate case 
 
 | Category | Max Points |
 |----------|------------|
-| Seniority Signals | 21 |
+| Level Signals | 21 |
 | Section Completeness | 36 |
 | Presentation Patterns | 11 |
 | **Total** | **68** |
@@ -459,17 +463,19 @@ Based on analysis of 12 senior designer portfolios, these patterns elevate case 
 
 | Score Range | Assessment |
 |-------------|------------|
-| 58-68 | Exceptional senior presentation |
-| 48-57 | Strong senior level |
-| 38-47 | Solid, some gaps |
-| 28-37 | Needs strengthening |
+| 58-68 | Exceptional at any level |
+| 48-57 | Strong; meets the senior bar or above |
+| 38-47 | Solid; meets the mid-level bar |
+| 28-37 | Meets the student or junior bar; gaps for higher levels |
 | Below 28 | Significant gaps |
+
+Always check the level thresholds above before calling a score weak.
 
 ---
 
 ## Red Flags (Immediate Concerns)
 
-- **No metrics**: Even relative ones matter
+- **No metrics** (mid-level and above): Even relative ones matter. For students and juniors, missing test results or feedback is the red flag instead
 - **"I did everything"**: Inflated ownership
 - **No trade-offs**: Perfect stories aren't credible
 - **Chronological process dump**: Missing strategic framing

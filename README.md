@@ -2,15 +2,16 @@
 
 > Turn raw project material into a polished portfolio case study in one go.
 
-Casestack is an installable AI skill package that helps senior UX/product designers (6+ years) create compelling portfolio case studies. It works with Cursor, Claude Code, and Codex.
+Casestack is an installable AI skill package that helps UX designers and product designers at every level create compelling portfolio case studies: students and interns, junior, mid-level, senior, and lead/staff/principal designers. It works with Cursor, Claude Code, and Codex.
 
 ## What It Does
 
+0. **Asks your level** first, then tailors everything that follows to it
 1. **Ingests** any mix of inputs: docs, PDFs, Figma files (via MCP), screenshots, notes
 2. **Interviews** you to fill gaps—asking only about thin/missing sections
-3. **Writes** senior-level content following a proven rubric
+3. **Writes** content at the right depth for your level, following a proven rubric
 4. **Generates** production-ready Next.js pages matching your portfolio's style
-5. **Reviews** and scores against hiring manager expectations
+5. **Reviews** and scores against what hiring managers expect at your level
 
 ## Installation
 
@@ -74,12 +75,27 @@ Or reference the skill directly:
 ```
 
 The skill will guide you through:
+0. Telling it your level (student, junior, mid, senior, or lead/staff/principal) and whether you're a UX or product designer
 1. Gathering your materials (docs, Figma, notes)
 2. Extracting structured content
-3. Interviewing for missing senior-level details
+3. Interviewing for the details that matter most at your level
 4. Generating the written case study
 5. Creating a matching Next.js page
 6. Reviewing and scoring the result
+
+## Choosing Your Level
+
+Before anything else, the skill asks which level fits you:
+
+| Level | Experience | What your case study should emphasize |
+|-------|------------|----------------------------------------|
+| Student / Intern | School, bootcamp, internship | Process, research, iterations, craft, what you learned |
+| Junior | 0-2 years | What you owned, process rigor, collaboration, craft |
+| Mid-level | 2-5 years | End-to-end ownership, decisions and trade-offs, measured impact |
+| Senior | 5-8 years | Problem framing, strategy, cross-functional influence, business impact |
+| Lead / Staff / Principal | 8+ years | Direction-setting, org influence, growing designers, multi-team outcomes |
+
+It also asks whether you're closer to a UX Designer or Product Designer role, and whether you're applying for a level above your current one. Career switchers start at Junior. Concept and class projects are welcome; the skill labels them honestly and never invents metrics.
 
 ## Package Structure
 
@@ -105,7 +121,9 @@ casestack/
 │   ├── styled-components/    # styled-components (17 components)
 │   └── emotion/              # Emotion (17 components)
 ├── references/
-│   ├── senior-rubric.md      # Scoring checklist (68 points)
+│   ├── case-study-rubric.md  # Scoring checklist (68 points, per-level thresholds)
+│   ├── career-levels.md      # Student → principal: priorities, tone, thresholds
+│   ├── ai-portfolio-rules.md # Five rules for using AI in a portfolio
 │   ├── writing-rules.md      # Content guidelines
 │   └── nda-handling.md       # Confidentiality guide
 ├── research/
@@ -136,9 +154,9 @@ Extracts structured content from your materials:
 
 ### `/case-study/interview`
 
-Compares extracted content against the senior rubric and asks targeted questions:
+Compares extracted content against the rubric and asks targeted questions:
 - One question at a time
-- Focuses on seniority signals (ownership, impact, strategy)
+- Prioritizes the signals that matter at your level (e.g. process and learning for students, strategy and influence for seniors)
 - Never invents metrics or quotes
 - Marks unknowns clearly
 
@@ -154,7 +172,7 @@ Generates the full case study narrative:
 Reference document explaining:
 - What each section should contain
 - What hiring managers look for
-- How to demonstrate seniority
+- What a strong case study looks like at junior vs. senior level
 - NDA handling guidance
 
 ### `/case-study/style-presets`
@@ -179,12 +197,12 @@ Creates Next.js pages that match your portfolio:
 Verifies and scores the case study:
 - Runs build/lint/typecheck
 - Captures screenshots
-- Scores against rubric
+- Scores against the rubric using your level's thresholds
 - Reports gaps and recommendations
 
 ## Case Study Sections
 
-A complete senior case study includes:
+A complete case study includes these sections at every level. The depth expected in each grows with seniority:
 
 | Section | Purpose |
 |---------|---------|
@@ -224,7 +242,7 @@ import {
 
 ### Interaction Components
 
-Based on analysis of 12 senior designer portfolios:
+Based on analysis of 12 designer portfolios:
 
 ```tsx
 import {
@@ -271,11 +289,11 @@ Validate a specific case study:
 npx casestack validate ./content/my-case-study.json
 ```
 
-## Senior Rubric Checklist
+## Rubric Checklist
 
 The rubric scores three categories (68 points total):
 
-### Seniority Signals (21 points)
+### Level Signals (21 points)
 | Signal | What it looks like |
 |--------|-------------------|
 | **Ownership** | Defined the approach, not just executed |
@@ -301,7 +319,17 @@ The rubric scores three categories (68 points total):
 - Mobile responsiveness (+1)
 - Accessibility compliance (+1)
 
-Target score: **48+/68** for strong senior level.
+### Targets by Level
+
+| Level | Signals (/21) | Sections (/36) |
+|-------|---------------|----------------|
+| Student / Intern | 8+ | 20+ |
+| Junior (0-2 yrs) | 10+ | 22+ |
+| Mid-level (2-5 yrs) | 13+ | 24+ |
+| Senior (5-8 yrs) | 15+ | 26+ |
+| Lead / Staff / Principal (8+ yrs) | 17+ | 28+ |
+
+See `references/career-levels.md` for what each level emphasizes.
 
 ## Writing Rules
 
@@ -325,7 +353,7 @@ The `examples/fictional-case-study/` directory contains a complete example with:
 - `page.mdx` - Written case study in MDX
 - `README.md` - Usage notes
 
-This example demonstrates senior-level depth, proper structure, and writing quality. Use it as a reference when creating your own case studies.
+This example is written at the Senior level and shows proper structure and writing quality. Use it as a reference when creating your own case studies.
 
 ## Requirements
 
@@ -339,4 +367,4 @@ MIT
 
 ---
 
-Built for senior designers who want portfolio case studies that actually land interviews.
+Built for UX and product designers at every level who want portfolio case studies that actually land interviews.

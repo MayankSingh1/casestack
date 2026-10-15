@@ -16,7 +16,7 @@ This directory contains a complete example case study using fictional data. Use 
 This example demonstrates:
 
 1. **Complete content model** - All fields populated with realistic (but fictional) data
-2. **Senior-level signals** - Ownership, strategy, impact, collaboration, reflection
+2. **Level signals** (written at the Senior level) - Ownership, strategy, impact, collaboration, reflection
 3. **Writing quality** - Outcome-first, concise, specific, no AI slop
 4. **Visual structure** - Clear sections, tables, quotes, metrics
 
@@ -50,4 +50,4 @@ All data in this example is fictional:
 - Team members and quotes are invented
 - No real proprietary information is included
 
-This example exists solely to demonstrate the expected structure and quality of a senior-level portfolio case study.
+This example exists solely to demonstrate the expected structure and quality of a portfolio case study written at the Senior level. Case studies at other levels use the same structure with different depth; see `references/career-levels.md`.

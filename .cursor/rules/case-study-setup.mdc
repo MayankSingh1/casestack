@@ -1,0 +1,32 @@
+---
+description: When the case-study skill is invoked (case study, portfolio case, casestack, UX or product design case), ask which kind of case study to write before any other step.
+alwaysApply: false
+---
+
+# Case study setup
+
+When the case-study skill is invoked, the first action is one question: which kind of case study to write. Do not read materials, interview, write, or generate a page until the user answers.
+
+Present these five kinds, using the one-line best fit from the style-presets skill:
+
+1. **Interactive Narrative** — product design, feature launches, 0-to-1 and multi-phase projects
+2. **Editorial Long-form** — research-heavy projects, leadership, culture, and strategy stories
+3. **Data/Metrics-Led** — data products, analytics, developer tools, and internal tools
+4. **Visual Campaign** — brand and campaign work, visual identity, and art direction
+5. **Design System Doc** — design systems, component libraries, and guidelines
+
+Wait for an answer. Do not auto-select.
+
+Store the choice as `stylePreset`:
+
+- `interactive-narrative`
+- `editorial-longform`
+- `data-metrics-led`
+- `visual-campaign`
+- `design-system-doc`
+
+Pass `stylePreset` through interview, writing, page generation, and review.
+
+If the same message already names a kind, confirm it in one line and continue. Do not ask again.
+
+Auto-select only when the user explicitly says to choose for them.

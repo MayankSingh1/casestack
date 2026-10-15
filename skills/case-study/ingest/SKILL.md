@@ -102,7 +102,7 @@ meta:
   slug: [derive from project name]
   title: [from docs or ask]
   oneLiner: [extract or synthesize]
-  role: [extract or ask - REQUIRED for senior level]
+  role: [extract or ask - REQUIRED at every level]
   timeline: [from dates mentioned]
   team: [names mentioned]
   teamSize: [count or ask]

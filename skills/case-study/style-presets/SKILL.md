@@ -10,17 +10,13 @@ Select and configure a presentation style preset based on the case study content
 
 ## When to Use
 
-Before generating pages, determine which style preset best suits the case study:
-- **Interactivity level**: Does the content benefit from scrollytelling?
-- **Content density**: Text-heavy vs. visual-heavy
-- **Portfolio voice**: Does the existing portfolio lean editorial or interactive?
-- **Case study type**: Product feature, campaign, design system, research
+The kind is chosen at skill invocation and stored as `stylePreset`. Before generating pages, apply that preset. Do not ask again.
 
 ## Available Presets
 
 ### 1. Interactive Narrative (Sanvithi-style) ⭐ Recommended for Product Features
 
-Based on analysis of https://sanvithi.com/explora - the gold standard for senior product case studies.
+Based on analysis of https://sanvithi.com/explora - a gold standard for product case studies at any level.
 
 **Characteristics**:
 - Pinned scrollytelling for solution sections
@@ -262,7 +258,9 @@ const preset: DesignSystemDocConfig = {
 
 ## Preset Selection Logic
 
-When the user hasn't specified a preference, auto-select based on content analysis:
+The kind is chosen when the case-study skill is invoked, before materials are gathered. If `stylePreset` is already set, apply that preset and skip this function.
+
+Auto-select only when the user explicitly says to choose for them:
 
 ```typescript
 function selectPreset(content: CaseStudy): StylePreset {
@@ -307,22 +305,19 @@ function selectPreset(content: CaseStudy): StylePreset {
 
 ## Asking User Preference
 
-When starting page generation, present preset options:
+Ask this once, at skill invocation, before gathering materials. If `stylePreset` is already set, apply it and skip the question.
 
 ```
-Based on your case study content, I recommend the **Interactive Narrative** preset, which includes:
-- Pinned scrollytelling for your solution sections
-- Animated metrics (showing your 12.5% improvement)
-- Numbered phases for your process
+Which kind of case study do you want to write?
 
-Other options:
-1. **Editorial Long-form** - Article-style continuous flow
-2. **Data/Metrics-Led** - Emphasizes your impact numbers
-3. **Visual Campaign** - Gallery-focused, minimal text
-4. **Design System Doc** - Component-focused structure
-
-Which would you prefer? (Or I can proceed with Interactive Narrative)
+1. Interactive Narrative — product design, feature launches, 0-to-1 and multi-phase projects
+2. Editorial Long-form — research-heavy projects, leadership, culture, and strategy stories
+3. Data/Metrics-Led — data products, analytics, developer tools, and internal tools
+4. Visual Campaign — brand and campaign work, visual identity, and art direction
+5. Design System Doc — design systems, component libraries, and guidelines
 ```
+
+Store the answer as `stylePreset`. Do not auto-select. If the same message already names a kind, confirm it in one line and continue. Auto-select only when the user explicitly says to choose for them.
 
 ## Component Availability by Preset
 

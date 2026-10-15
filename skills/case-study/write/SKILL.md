@@ -1,12 +1,26 @@
 ---
 name: case-study/write
-description: Generate case study content following senior rubric and writing rules
+description: Generate case study content following the rubric and writing rules, in the tone for the designer's level
 parent: case-study
 ---
 
 # Write Sub-skill
 
-Transform the structured content model into polished case study prose that demonstrates senior-level thinking.
+Transform the structured content model into polished case study prose that shows the thinking expected at the designer's level.
+
+## Level Calibration
+
+Read `meta.designerLevel` (and `meta.targetLevel`, if higher) and the **Writing Tone by Level** table in `references/career-levels.md`. Then:
+
+| Level | Lead with | Keep it honest |
+|-------|-----------|----------------|
+| Student / Intern | The brief, research, iterations, what you learned | Label concept or course work as such. Credit mentors and teammates |
+| Junior | What you owned, your process, collaboration | Use "we" for team work. Don't claim strategy you didn't set |
+| Mid-level | Decisions, trade-offs, measured results | Show what you owned end to end |
+| Senior | Problem framing, business impact, who you aligned | Show trade-offs at product level |
+| Lead / Staff / Principal | Direction you set, how others' work changed, org outcomes | Show the hard calls and their costs |
+
+For concept or academic projects (`meta.projectType` is `concept` or `academic`): replace the business problem with the brief or user problem. Use test results and feedback for impact. Never invent business metrics.
 
 ## Input
 
@@ -25,7 +39,9 @@ Transform the structured content model into polished case study prose that demon
 
 Before writing, read:
 ```
+Read: references/career-levels.md
 Read: references/writing-rules.md
+Read: references/ai-portfolio-rules.md
 Read: skills/case-study/architecture/SKILL.md
 ```
 
@@ -144,7 +160,7 @@ For each major decision:
 Include 2-4 key decisions. Focus on the ones that:
 - Were contested or non-obvious
 - Had significant impact
-- Demonstrate senior thinking
+- Show the thinking expected at the designer's level
 
 #### Solution Walkthrough
 
@@ -262,6 +278,17 @@ Before finalizing, verify:
 - [ ] Visuals referenced for solution section
 - [ ] Alt text prompts generated for images
 - [ ] NDA compliance noted if applicable
+
+#### AI Portfolio Rules
+
+Check against `references/ai-portfolio-rules.md` before finishing:
+
+- [ ] **Rule #1 — Keep your personal voice.** The prose shows what problem the designer solved, what they learned, and which decisions they made and why. The wording stays theirs. Do not replace a specific answer with generic process language.
+- [ ] **Rule #2 — Show evidence.** Process descriptions are backed by research findings, testing insights, or design iterations from the content model. Do not invent those.
+- [ ] **Rule #3 — Clarify ownership.** If `aiSupport.used` is true, the case study states which tool was used and why, what AI helped do, what the designer reviewed or changed, and which decisions were theirs. If AI was not used, omit that disclosure.
+- [ ] **Rule #5 — Show your thinking.** Each major decision includes why the problem mattered, what evidence informed the solution, which trade-offs were considered, and what changed because of the work.
+
+Rule #4 (check visuals) is enforced in page generation and review, not in this prose pass.
 
 ### 6. Output Format
 

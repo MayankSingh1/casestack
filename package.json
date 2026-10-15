@@ -1,7 +1,7 @@
 {
   "name": "casestack-skills",
   "version": "1.1.0",
-  "description": "Turn raw project material into a polished portfolio case study in one go. A senior UX/product designer's skill package for Cursor, Claude Code, and Codex.",
+  "description": "Turn raw project material into a polished portfolio case study in one go. A skill package for UX and product designers at every level, from student to principal, for Cursor, Claude Code, and Codex.",
   "main": "lib/init.js",
   "bin": {
     "casestack": "./bin/casestack.js"

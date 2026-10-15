@@ -714,6 +714,18 @@ import {
 />
 ```
 
+## Rule #4 — Check Visuals
+
+Before shipping, review generated or AI-assisted images against Rule #4 in `references/ai-portfolio-rules.md`:
+
+- **Consistent styles.** Type, color, and spacing match the portfolio. A generated image that introduces a new palette, typeface, or corner radius fails.
+- **Proper alignment.** Images, captions, and surrounding text sit on the existing grid. Misaligned frames, uneven gutters, and overflowing media fail.
+- **Accurate representation of the work.** The visual depicts the real screens, flows, or artifacts from the project. If a visual cannot be verified as the designer’s work, use a labeled placeholder instead of a generated stand-in.
+
+```mdx
+{/* Placeholder: replace with the actual checkout screen. AI-generated stand-in removed — not verified as the designer’s work. */}
+```
+
 ## Output Checklist
 
 After generation, verify:
@@ -724,5 +736,6 @@ After generation, verify:
 - [ ] Mobile responsive
 - [ ] Metadata populated
 - [ ] Matches existing portfolio styling
+- [ ] Rule #4: styles consistent, alignment holds, visuals represent the real work (or are labeled placeholders)
 - [ ] No TypeScript errors
 - [ ] No ESLint errors

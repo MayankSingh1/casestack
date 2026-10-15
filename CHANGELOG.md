@@ -2,6 +2,20 @@
 
 All notable changes to casestack-skills will be documented in this file.
 
+## [Unreleased]
+
+### Added
+- **Designer level selection**: every run now starts by asking the designer's level (Student/Intern, Junior, Mid-level, Senior, Lead/Staff/Principal), role track (UX or Product Designer), and optional target level
+- `references/career-levels.md`: per-level priorities, interview questions, writing tone, and score thresholds
+- Content model fields: `meta.designerLevel`, `meta.roleTrack`, `meta.targetLevel`, `meta.projectType`
+- Guidance for concept, academic, and bootcamp projects
+
+### Changed
+- Casestack now supports UX and product designers at every level, not only senior designers
+- `references/senior-rubric.md` renamed to `references/case-study-rubric.md`, with per-level thresholds. `getReferencePath('senior-rubric')` still works as an alias
+- Interview, write, review, and architecture skills calibrate to the designer's level
+- "Seniority signals" renamed to "level signals"
+
 ## [1.1.0] - 2026-10-13
 
 ### Added

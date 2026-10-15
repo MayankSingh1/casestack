@@ -2,7 +2,7 @@
   "name": "casestack",
   "version": "1.1.0",
   "displayName": "Casestack: Portfolio Case Study Generator",
-  "description": "Transform raw project material into senior-level portfolio case studies with structured content, gap-fill interviews, and production-ready Next.js pages.",
+  "description": "Transform raw project material into portfolio case studies for UX and product designers at every level with structured content, gap-fill interviews, and production-ready Next.js pages.",
   "author": "",
   "license": "MIT",
   "repository": "https://github.com/MayankSingh1/casestack",
@@ -21,17 +21,17 @@
     {
       "name": "case-study/interview",
       "path": "case-study/interview/SKILL.md",
-      "description": "Gap-fill interview to capture missing senior case-study content"
+      "description": "Gap-fill interview to capture missing case-study content, prioritized by designer level"
     },
     {
       "name": "case-study/write",
       "path": "case-study/write/SKILL.md",
-      "description": "Generate case study content following senior rubric"
+      "description": "Generate case study content in the tone for the designer's level"
     },
     {
       "name": "case-study/architecture",
       "path": "case-study/architecture/SKILL.md",
-      "description": "Reference for senior case-study architecture"
+      "description": "Reference for case-study architecture"
     },
     {
       "name": "case-study/style-presets",
@@ -46,7 +46,7 @@
     {
       "name": "case-study/review",
       "path": "case-study/review/SKILL.md",
-      "description": "Score case study against senior rubric and verify build"
+      "description": "Score case study against the rubric for the designer's level and verify build"
     }
   ],
   "templates": {
@@ -56,7 +56,9 @@
     "emotion": "templates/emotion/"
   },
   "references": [
-    "references/senior-rubric.md",
+    "references/case-study-rubric.md",
+    "references/career-levels.md",
+    "references/ai-portfolio-rules.md",
     "references/writing-rules.md",
     "references/nda-handling.md"
   ],

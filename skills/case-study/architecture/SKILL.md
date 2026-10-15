@@ -1,13 +1,15 @@
 ---
 name: case-study/architecture
-description: Reference for senior case-study architecture and what hiring managers look for
+description: Reference for case-study architecture and what hiring managers look for at each level
 parent: case-study
 type: reference
 ---
 
-# Senior Case Study Architecture
+# Case Study Architecture
 
-This reference document explains each section of a senior-level portfolio case study, what hiring managers look for, and how to demonstrate seniority through your narrative.
+This reference document explains each section of a portfolio case study, what hiring managers look for, and how to show the right signals for your level. The sections are the same at every level. What changes is the depth expected. See `references/career-levels.md`.
+
+Each section has a **Level signal** line. It shows what a strong junior case study does and what a strong senior-and-above case study does.
 
 ---
 
@@ -84,7 +86,7 @@ reducing abandonment by 23% and recovering $4.2M in the first year.
 - Ability to articulate problem significance
 - Awareness of stakeholder landscape
 
-**Senior signal**: Connect design work to business outcomes
+**Level signal**: Junior: explain the user problem clearly. Senior+: connect design work to business outcomes
 
 **Example**:
 ```
@@ -111,9 +113,9 @@ trust and complexity as top friction points.
 - Honest ownership (not inflated)
 - Collaboration with cross-functional partners
 - Leadership scope (did you set direction or execute?)
-- Appropriate seniority for the role you're applying to
+- Scope that fits the level of the role you're applying to
 
-**Senior signal**: Show you influenced beyond your immediate deliverables
+**Level signal**: Junior: be precise about what you owned vs. the team. Senior+: show you influenced beyond your immediate deliverables
 
 **Example**:
 ```
@@ -143,7 +145,7 @@ As Lead Product Designer, I:
 - Problem-solving under pressure
 - Ability to prioritize ruthlessly
 
-**Senior signal**: Constraints reveal how you make trade-offs
+**Level signal**: Junior: name real constraints and how you worked within them. Senior+: show how constraints drove your trade-offs
 
 **Example**:
 ```
@@ -171,7 +173,7 @@ As Lead Product Designer, I:
 - Ability to synthesize insights
 - Connecting research to decisions
 
-**Senior signal**: You drove research, not just consumed it
+**Level signal**: Junior: show what you learned and how it shaped the design. Senior+: you drove research, not just consumed it
 
 **Example**:
 ```
@@ -206,7 +208,7 @@ Key Findings:
 - Strategic metric selection
 - Alignment with business goals
 
-**Senior signal**: You defined the goalposts, not just hit them
+**Level signal**: Junior: state the problem you set out to solve. Senior+: you defined the goalposts, not just hit them
 
 **Example**:
 ```
@@ -244,7 +246,7 @@ Success Metrics:
 - Ability to articulate trade-offs
 - Sound rationale
 
-**Senior signal**: Show the decisions you DIDN'T make and why
+**Level signal**: Junior: explain why you chose your approach. Mid+: show the options you DIDN'T choose and why
 
 **Example**:
 ```
@@ -283,7 +285,7 @@ stepping. Hybrid accommodated both without forcing a choice.
 - Explicit connection between insight → design decision
 - Understanding of the full user journey
 
-**Senior signal**: Annotations explain WHY, not just WHAT
+**Level signal (all levels)**: Annotations explain WHY, not just WHAT
 
 **Example annotation**:
 ```
@@ -312,7 +314,7 @@ stepping. Hybrid accommodated both without forcing a choice.
 - You respond to feedback
 - You iterate (not just "ship and forget")
 
-**Senior signal**: Show a decision that changed based on testing
+**Level signal (all levels)**: Show a decision that changed based on testing
 
 **Example**:
 ```
@@ -343,7 +345,7 @@ A/B Test (2 weeks, n=50,000):
 - Connection to business value
 - Appropriate attribution (not overclaiming)
 
-**Senior signal**: Tie design work to business impact
+**Level signal**: Student/Junior: test results, task success, and feedback count. Mid+: tie design work to business impact
 
 **Example**:
 ```
@@ -376,7 +378,7 @@ Qualitative:
 - Continuous learning mindset
 - Mature perspective on challenges
 
-**Senior signal**: Honest reflection, not false modesty
+**Level signal (all levels)**: Honest reflection, not false modesty
 
 **Example**:
 ```
@@ -435,9 +437,11 @@ What I'd do differently:
 
 ---
 
-## Senior Rubric & Scoring Checklist
+## Rubric & Scoring Checklist
 
-### Seniority Signals
+Full rubric: `references/case-study-rubric.md`. Thresholds per level: `references/career-levels.md`.
+
+### Level Signals
 
 | Signal | What it looks like | Score (0-3) |
 |--------|-------------------|-------------|
@@ -468,16 +472,15 @@ What I'd do differently:
 
 **Total: /36**
 
-- 30-36: Strong senior presentation
-- 24-29: Solid, minor gaps
-- 18-23: Needs strengthening
-- <18: Significant gaps to address
+Minimum section score by level: Student 20 · Junior 22 · Mid 24 · Senior 26 · Lead/Staff/Principal 28.
 
 ---
 
 ## Writing Rules
 
-See: `references/writing-rules.md` for detailed guidance
+See: `references/writing-rules.md` for detailed guidance.
+
+See: `references/ai-portfolio-rules.md` for the five rules on using AI in a UX portfolio. Section structure does not change.
 
 ### Quick Reference
 
@@ -489,6 +492,14 @@ See: `references/writing-rules.md` for detailed guidance
 6. **Specific**: Numbers over adjectives
 7. **Active voice**: "I led" not "was led by me"
 8. **Honest**: Mark estimates, don't fabricate
+
+### AI Portfolio Rules
+
+1. **Keep your personal voice**: Show the problem solved, what was learned, and which decisions were made and why
+2. **Show evidence**: Back process with research findings, testing insights, and design iterations
+3. **Clarify ownership**: When AI supported the work, name the tool and why, what AI helped do, what was reviewed or changed, and which decisions were the designer’s
+4. **Check visuals**: Consistent styles, proper alignment, accurate representation of the work
+5. **Show your thinking**: Why the problem mattered, what evidence informed the solution, which trade-offs were considered, and what changed because of the work
 
 ---
 

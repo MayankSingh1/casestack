@@ -162,7 +162,9 @@ Templates (17 components × 4 styling systems):
   • emotion/
 
 References:
-  • senior-rubric.md (68-point scoring)
+  • case-study-rubric.md (68-point scoring, per-level thresholds)
+  • career-levels.md (student to principal)
+  • ai-portfolio-rules.md
   • writing-rules.md
   • nda-handling.md
 

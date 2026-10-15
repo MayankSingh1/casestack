@@ -1,6 +1,6 @@
 # Case Study Writing Rules
 
-Guidelines for writing senior-level portfolio case studies that communicate effectively to hiring managers.
+Guidelines for writing portfolio case studies at any level that communicate effectively to hiring managers.
 
 ## Core Principles
 
@@ -57,6 +57,8 @@ Numbers beat adjectives. Specifics beat generalities.
 ---
 
 ## Banned Phrases (AI Slop)
+
+Banned phrases are a style check. The five portfolio rules in `references/ai-portfolio-rules.md` are separate: they are what the case study must still prove (personal voice, evidence, ownership, visual accuracy, and thinking).
 
 These phrases are red flags that suggest the content was AI-generated or poorly written. Avoid them:
 

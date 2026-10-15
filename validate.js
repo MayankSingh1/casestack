@@ -83,7 +83,9 @@ for (const skill of skills) {
 console.log('\n📚 References\n');
 
 const references = [
-  'references/senior-rubric.md',
+  'references/case-study-rubric.md',
+  'references/career-levels.md',
+  'references/ai-portfolio-rules.md',
   'references/writing-rules.md',
   'references/nda-handling.md'
 ];
@@ -210,15 +212,15 @@ if (exampleContent) {
   check('impact.metrics present', 
     Array.isArray(exampleContent.impact?.metrics) && exampleContent.impact.metrics.length > 0);
   
-  // Senior content checks
-  check('constraints documented (seniority signal)', 
+  // Level signal checks
+  check('constraints documented (level signal)', 
     Array.isArray(exampleContent.constraints) && exampleContent.constraints.length >= 2);
-  check('process decisions documented (seniority signal)', 
+  check('process decisions documented (level signal)', 
     Array.isArray(exampleContent.process) && 
     exampleContent.process.some(p => p.decisions && p.decisions.length > 0));
-  check('reflection.learnings present (seniority signal)', 
+  check('reflection.learnings present (level signal)', 
     Array.isArray(exampleContent.reflection?.learnings) && exampleContent.reflection.learnings.length > 0);
-  check('reflection.whatWouldChange present (seniority signal)', 
+  check('reflection.whatWouldChange present (level signal)', 
     Array.isArray(exampleContent.reflection?.whatWouldChange) && exampleContent.reflection.whatWouldChange.length > 0);
   
   // Content quality
